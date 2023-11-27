@@ -6,7 +6,6 @@ from utils import get_full_dataset
 
 dataset = get_full_dataset()
 print(dataset.shape)
-
 # Phase 1
 print("Trainign Phase 1")
 train_phase_1(dataset)
