@@ -46,7 +46,7 @@ def _predict(model, data_loader, device):
 
     return predictions
 
-def inference_phase_2(model_path, data):
+def inference_phase_2(letter, model_path, data):
     device = torch.device("cuda" if torch.cuda.is_available() else "mps")
 
     # Load tokenizer and model
@@ -69,7 +69,7 @@ def inference_phase_2(model_path, data):
     predictions = _predict(model, unseen_data_loader, device)
 
     # Save predictions to a CSV file
-    data['predictions'] = predictions
+    data['predictions_phase2_' + str(letter)] = predictions
     data.to_csv('phase_2_predictions.csv', index=False)
 
     return predictions
