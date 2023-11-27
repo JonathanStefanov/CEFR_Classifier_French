@@ -1,19 +1,23 @@
-from phase1 import train_phase1
+from phase1 import train_phase_1
 from phase2 import train_phase_2
+from utils import get_full_dataset
 # This file will train the three phases of the model
+
+
+dataset = get_full_dataset()
+print(dataset.shape)
 
 # Phase 1
 print("Trainign Phase 1")
-train_phase_1()
+train_phase_1(dataset)
 
 # Phase 2
-phase2("Training Phase 2 - A")
-phase2("A")
+print("Training Phase 2 - A")
+train_phase_2("A", dataset)
 
-phase2("Training Phase 2 - B")
-phase2("B")
+print("Training Phase 2 - B")
+train_phase_2("B", dataset)
 
-phase2("Training Phase 2 - C")
-phase2("C")
-
+print("Training Phase 2 - C")
+train_phase_2("C", dataset)
 
