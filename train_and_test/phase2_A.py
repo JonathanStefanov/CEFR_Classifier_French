@@ -14,7 +14,7 @@ BATCH_SIZE = 8
 EPOCHS = 3
 
 # Load the dataset
-url = 'https://storage.googleapis.com/kagglesdsdata/competitions/64188/7030891/training_data.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1700944126&Signature=fWtTy0APW1%2B0d9ad9px0qP4Y%2BUY2%2BYO0LRnD%2F8SHZTXCtFnLDWkDLePTmWL%2BOVlyeHrfIxR6vas2dSmxrmfEzJl1r0zrTudfdzI3vFaAxm25l%2BG5WOJyYKEPYNNoAPLsvGRg6cY3wnVQ844M7vrXJ7ryAS13iji9TII3BCBbFoFOFAQ15kG7BPdKxtI1basBFZmSnK9lbAKjfFB9uA6iWdUGvtAb3PE2J0M2rXjlVcaGqp6Yvu04bOaSryt0c66WZLa9FZv70pNd3RLnn7g7LWxi%2BGtpNDUXE71WHAFOBSnctum4TH%2Fb5Z0aCU1xlvGUhz8byJA%2FP8kvPCX3Cb7eTQ%3D%3D&response-content-disposition=attachment%3B+filename%3Dtraining_data.csv'
+url = 'training_data.csv'
 df = pd.read_csv(url)
 
 # Filter the dataset to only include A1 and A2 levels
