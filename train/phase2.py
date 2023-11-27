@@ -36,7 +36,7 @@ class FrenchSentencesDataset(Dataset):
             'labels': torch.tensor(label, dtype=torch.long)
         }
 
-def train_model(model, train_data_loader, optimizer, loss_fn, epochs, device, letter):
+def _train_model(model, train_data_loader, optimizer, loss_fn, epochs, device, letter):
     for epoch in range(epochs):
         model.train()
         total_loss = 0
@@ -59,7 +59,7 @@ def train_model(model, train_data_loader, optimizer, loss_fn, epochs, device, le
     print("Training complete. Saving the model.")
     torch.save(model.state_dict(), "phase_2_" + str(letter) + ".pth")
 
-def train_phase_2(letter):
+def train_phase_2(letter, dataset):
     device = torch.device("cuda" if torch.cuda.is_available() else "mps")
     print(f'Using device: {device}')
 
@@ -67,9 +67,7 @@ def train_phase_2(letter):
     BATCH_SIZE = 8
     EPOCHS = 3
 
-    # Load the dataset
-    url = 'https://storage.googleapis.com/kagglesdsdata/competitions/64188/7030891/training_data.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1701357839&Signature=NG20u%2FBUt4YRLG7S%2BXcYIrHpWLtQboLz%2B1HEfvGLcGail9adb6C2Yt%2F%2Bf%2BctAv3lq8hPwO8RWAAcTunj1hElUR9AO3B%2BygmbJbcJw3P%2FRbO1JcJjRPg4MgUhSnSjUNI2xQWjUklkSTl82ORrqVargteW0N%2FxLcqh%2BRR35wJbPgAec6RyJjHCFOAIFqneVtMqGUnmOniHWoF0wwqWUQfez6eAZWE7SlyulpnV5XNDevBwOGEMNvg6%2FhkI9VsooMHqNH9k92DwqOsa9oxnDtPWBLNzdoiOe4nr0ossnhHIWXv5RrHsTPCt3ERu3RH8wVfLcSARgRuXUD31VXoYxWPKiQ%3D%3D&response-content-disposition=attachment%3B+filename%3Dtraining_data.csv'
-    df = pd.read_csv(url)
+    df = dataset
 
     wanted_letters = [str(letter) + '1', str(letter) + '2']
 
@@ -97,7 +95,7 @@ def train_phase_2(letter):
     loss_fn = torch.nn.CrossEntropyLoss()
 
     # Train the model
-    train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device, letter)
+    _train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device, letter)
 
 
 if __name__ == '__main__':

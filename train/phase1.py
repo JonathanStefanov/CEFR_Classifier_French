@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 import torch
 # Training function (no evaluation)
-def train_model(model, train_data_loader, optimizer, loss_fn, epochs, device):
+def _train_model(model, train_data_loader, optimizer, loss_fn, epochs, device):
     for epoch in range(epochs):
         model.train()
         total_loss = 0
@@ -28,7 +28,7 @@ def train_model(model, train_data_loader, optimizer, loss_fn, epochs, device):
     print("Training complete. Saving the model.")
     torch.save(model.state_dict(), "phase1.pth")
 
-def phase1():
+def train_phase_1(dataset):
     device = torch.device("cuda" if torch.cuda.is_available() else "mps")
     print(f'Using device: {device}')
 
@@ -37,8 +37,7 @@ def phase1():
     EPOCHS = 3
 
     # Load the dataset
-    url = 'https://storage.googleapis.com/kagglesdsdata/competitions/64188/7030891/training_data.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1701357839&Signature=NG20u%2FBUt4YRLG7S%2BXcYIrHpWLtQboLz%2B1HEfvGLcGail9adb6C2Yt%2F%2Bf%2BctAv3lq8hPwO8RWAAcTunj1hElUR9AO3B%2BygmbJbcJw3P%2FRbO1JcJjRPg4MgUhSnSjUNI2xQWjUklkSTl82ORrqVargteW0N%2FxLcqh%2BRR35wJbPgAec6RyJjHCFOAIFqneVtMqGUnmOniHWoF0wwqWUQfez6eAZWE7SlyulpnV5XNDevBwOGEMNvg6%2FhkI9VsooMHqNH9k92DwqOsa9oxnDtPWBLNzdoiOe4nr0ossnhHIWXv5RrHsTPCt3ERu3RH8wVfLcSARgRuXUD31VXoYxWPKiQ%3D%3D&response-content-disposition=attachment%3B+filename%3Dtraining_data.csv' 
-    df = pd.read_csv(url)
+    df = dataset
 
     # Simplify the difficulty levels
     df['difficulty'] = df['difficulty'].str[0]
@@ -95,7 +94,7 @@ def phase1():
 
 
     # Train the model
-    train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device)
+    _train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device)
 
 
 
