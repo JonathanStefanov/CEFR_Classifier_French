@@ -33,7 +33,7 @@ def train_phase_1(dataset):
     print(f'Using device: {device}')
 
     MAX_LEN = 387
-    BATCH_SIZE = 8
+    BATCH_SIZE = 16
     EPOCHS = 3
 
     # Load the dataset

@@ -64,8 +64,8 @@ def train_phase_2(letter, dataset):
     print(f'Using device: {device}')
 
     MAX_LEN = 387
-    BATCH_SIZE = 8
-    EPOCHS = 3
+    BATCH_SIZE = 16
+    EPOCHS = 2
 
     df = dataset
 
@@ -98,5 +98,3 @@ def train_phase_2(letter, dataset):
     _train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device, letter)
 
 
-if __name__ == '__main__':
-    train_phase_2('A')

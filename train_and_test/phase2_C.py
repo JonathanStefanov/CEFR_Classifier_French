@@ -4,18 +4,77 @@ from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 import torch
+import os 
 from sklearn.model_selection import train_test_split
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f'Using device: {device}')
 
 MAX_LEN = 387
-BATCH_SIZE = 8
-EPOCHS = 3
+BATCH_SIZE = 16
+EPOCHS = 5
 
 # Load the dataset
-url = 'https://storage.googleapis.com/kagglesdsdata/competitions/64188/7030891/training_data.csv?GoogleAccessId=web-data@kaggle-161607.iam.gserviceaccount.com&Expires=1700944126&Signature=fWtTy0APW1%2B0d9ad9px0qP4Y%2BUY2%2BYO0LRnD%2F8SHZTXCtFnLDWkDLePTmWL%2BOVlyeHrfIxR6vas2dSmxrmfEzJl1r0zrTudfdzI3vFaAxm25l%2BG5WOJyYKEPYNNoAPLsvGRg6cY3wnVQ844M7vrXJ7ryAS13iji9TII3BCBbFoFOFAQ15kG7BPdKxtI1basBFZmSnK9lbAKjfFB9uA6iWdUGvtAb3PE2J0M2rXjlVcaGqp6Yvu04bOaSryt0c66WZLa9FZv70pNd3RLnn7g7LWxi%2BGtpNDUXE71WHAFOBSnctum4TH%2Fb5Z0aCU1xlvGUhz8byJA%2FP8kvPCX3Cb7eTQ%3D%3D&response-content-disposition=attachment%3B+filename%3Dtraining_data.csv'
-df = pd.read_csv(url)
+def merge_clean_datasets(*urls):
+    required_columns = {'sentence', 'difficulty'}
+    dataframes = []
+
+    for url in urls:
+        df = pd.read_csv(url)
+
+        # Check if the dataframe contains the required columns
+        if not required_columns.issubset(df.columns):
+            raise ValueError(f"The dataset from {url} does not contain the required columns.")
+
+        dataframes.append(df)
+
+    # Merge the dataframes
+    df_merged = pd.concat(dataframes, ignore_index=True)
+
+    # Remove duplicate sentences
+    df_merged = df_merged.drop_duplicates(subset='sentence', keep='first')
+
+    return df_merged
+
+
+def get_file_paths(directory):
+    """
+    Returns a list of file paths for all files in the given directory.
+    
+    :param directory: The directory to search for files.
+    :return: A list of file paths.
+    """
+    file_paths = []
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            file_path = os.path.join(root, file)
+            file_paths.append(file_path)
+    
+    return file_paths
+
+def get_full_dataset():
+    """
+    Returns the full dataset.
+    
+    :return: The full dataset.
+    """
+    # Get the file paths for all files in the data directory
+    file_paths = get_file_paths('datasets/')
+    
+    # Merge the datasets
+    df = merge_clean_datasets(*file_paths)
+    
+    return df
+
+device = torch.device("cuda" if torch.cuda.is_available() else "mps")
+print(f'Using device: {device}')
+
+MAX_LEN = 387
+BATCH_SIZE = 16
+EPOCHS = 5
+
+# Load the dataset
+df = get_full_dataset()
 
 # Filter the dataset to only include A1 and A2 levels
 df = df[df['difficulty'].isin(['C1', 'C2'])]
@@ -130,7 +189,7 @@ def train_and_evaluate(model, train_data_loader, val_data_loader, optimizer, los
     print(f'Best Validation Accuracy: {best_val_accuracy:.2f}')
     print("Saving the model")
 
-    torch.save(model.state_dict(), "phase2_C_model.pth")
+    torch.save(model.state_dict(), "phase2_B_model.pth")
 
 # Train and evaluate the model
 train_and_evaluate(model, train_data_loader, val_data_loader, optimizer, loss_fn, EPOCHS, device)
