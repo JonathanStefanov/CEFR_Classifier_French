@@ -15,9 +15,9 @@ df_B = df[df['predictions'] == 1]
 df_C = df[df['predictions'] == 2]
 
 # Phase 2
-model_path_A = 'phase_2_A.pth'  # Replace with your Phase 2 model path
-model_path_B = 'phase_2_B.pth'  # Replace with your Phase 2 model path
-model_path_C = 'phase_2_C.pth'  # Replace with your Phase 2 model path
+model_path_A = 'phase_2_A.pth'  
+model_path_B = 'phase_2_B.pth' 
+model_path_C = 'phase_2_C.pth'  
 
 df_A = df_A.reset_index(drop=True)
 df_B = df_B.reset_index(drop=True)
