@@ -96,5 +96,3 @@ def train_phase_2(letter, dataset):
 
     # Train the model
     _train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, device, letter)
-
-

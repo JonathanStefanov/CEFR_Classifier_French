@@ -2,8 +2,8 @@ import pandas as pd
 from phase1 import inference_phase_1
 from phase2 import inference_phase_2
 
-unseen_data_path = 'path_to_unseen_data.csv'  # Replace with your unseen data path
-output_file_path = 'predictions_phase1.csv'  # The path where you want to save the predictions
+unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
+output_file_path = 'inference/predictions_phase1.csv'  # The path where you want to save the predictions
 
 inference_phase_1(unseen_data_path, output_file_path)
 
