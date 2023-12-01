@@ -1,6 +1,6 @@
 import pandas as pd
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import CamembertTokenizer, CamembertForSequenceClassification
 from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
@@ -44,7 +44,7 @@ class Trainer:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
-        self.tokenizer = AutoTokenizer.from_pretrained("almanach/camemberta-base")
+        self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
 
     def _train_model(self, model, train_data_loader, optimizer, loss_fn, epochs, phase_letter=None):
         for epoch in range(epochs):
@@ -85,7 +85,7 @@ class Trainer:
         train_dataset = FrenchSentencesDataset(train_sentences, train_labels, self.tokenizer, self.MAX_LEN)
         train_data_loader = DataLoader(train_dataset, batch_size=self.BATCH_SIZE, shuffle=True)
 
-        model = AutoModelForSequenceClassification.from_pretrained("almanach/camemberta-base", num_labels=3)
+        model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=3)
         model.to(self.device)
 
         optimizer = AdamW(model.parameters(), lr=5e-5)
@@ -109,7 +109,7 @@ class Trainer:
         train_dataset = FrenchSentencesDataset(train_sentences, train_labels, self.tokenizer, self.MAX_LEN)
         train_data_loader = DataLoader(train_dataset, batch_size=self.BATCH_SIZE, shuffle=True)
 
-        model = AutoModelForSequenceClassification.from_pretrained("almanach/camemberta-base", num_labels=2)
+        model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=2)
         model.to(self.device)
 
         optimizer = AdamW(model.parameters(), lr=5e-5)
@@ -124,7 +124,7 @@ dataset = get_full_dataset()  # Replace with your dataset loading method
 
 # Train Phase 1
 print("Training Phase 1")
-trainer.train_phase_1(dataset)
+#trainer.train_phase_1(dataset)
 
 # Train Phase 2
 for letter in ["A", "B", "C"]:
