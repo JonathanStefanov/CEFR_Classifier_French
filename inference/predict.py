@@ -1,7 +1,8 @@
 import pandas as pd
 import torch
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from transformers import CamembertTokenizer, CamembertForSequenceClassification
 from torch.utils.data import DataLoader, Dataset
+from tqdm import tqdm
 
 # Define a class for the Predictor
 class Predictor:
@@ -10,7 +11,7 @@ class Predictor:
         self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
-        self.tokenizer = AutoTokenizer.from_pretrained("almanach/camemberta-base")
+        self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
 
     class FrenchSentencesDataset(Dataset):
         def __init__(self, sentences, tokenizer, max_len):
@@ -45,7 +46,7 @@ class Predictor:
         predictions = []
 
         with torch.no_grad():
-            for batch in data_loader:
+            for batch in tqdm(data_loader, desc="Predicting..."):
                 input_ids = batch['input_ids'].to(self.device)
                 attention_mask = batch['attention_mask'].to(self.device)
 
@@ -54,11 +55,10 @@ class Predictor:
                 predictions.extend(preds.tolist())
 
         return predictions
-
     def inference_phase(self, phase, model_path, data):
         # Load model
         num_labels = 3 if phase == 1 else 2
-        model = AutoModelForSequenceClassification.from_pretrained("almanach/camemberta-base", num_labels=num_labels)
+        model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=num_labels)
         model.load_state_dict(torch.load(model_path, map_location=self.device))
         model.to(self.device)
 
