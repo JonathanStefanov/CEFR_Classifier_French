@@ -3,7 +3,7 @@ import torch
 from transformers import CamembertTokenizer, CamembertForSequenceClassification
 from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
-from tqdm import tqdm
+from stqdm import stqdm
 from utils import get_full_dataset
 
 # Define the FrenchSentencesDataset class
@@ -40,10 +40,14 @@ class FrenchSentencesDataset(Dataset):
 
 # Define the Trainer class
 class Trainer:
-    def __init__(self):
+    def __init__(self, max_len=387, batch_size=16, epochs_phase_1=3, epochs_phase_2=2, lr_phase_1=5e-5, lr_phase_2=5e-5):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
-        self.MAX_LEN = 387
-        self.BATCH_SIZE = 16
+        self.MAX_LEN = max_len
+        self.BATCH_SIZE = batch_size
+        self.EPOCHS_PHASE_1 = epochs_phase_1
+        self.EPOCHS_PHASE_2 = epochs_phase_2
+        self.LR_PHASE_1 = lr_phase_1
+        self.LR_PHASE_2 = lr_phase_2
         self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
 
     def _train_model(self, model, train_data_loader, optimizer, loss_fn, epochs, phase_letter=None):
@@ -51,7 +55,7 @@ class Trainer:
             model.train()
             total_loss = 0
 
-            for batch in tqdm(train_data_loader, desc="Training"):
+            for i, batch in stqdm(enumerate(train_data_loader), total=len(train_data_loader), desc=f'Epoch {epoch+1}/{epochs}'):
                 optimizer.zero_grad()
                 input_ids = batch['input_ids'].to(self.device)
                 attention_mask = batch['attention_mask'].to(self.device)
@@ -62,6 +66,7 @@ class Trainer:
                 total_loss += loss.item()
                 loss.backward()
                 optimizer.step()
+
 
             avg_train_loss = total_loss / len(train_data_loader)
             print(f'Epoch {epoch + 1}/{epochs} - Training loss: {avg_train_loss:.2f}')
@@ -88,10 +93,10 @@ class Trainer:
         model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=3)
         model.to(self.device)
 
-        optimizer = AdamW(model.parameters(), lr=5e-5)
+        optimizer = AdamW(model.parameters(), lr=self.LR_PHASE_1)
         loss_fn = torch.nn.CrossEntropyLoss()
 
-        self._train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS)
+        self._train_model(model, train_data_loader, optimizer, loss_fn, self.EPOCHS_PHASE_1)
 
     def train_phase_2(self, letter, dataset):
         print(f'Using device: {self.device}')
@@ -112,21 +117,21 @@ class Trainer:
         model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=2)
         model.to(self.device)
 
-        optimizer = AdamW(model.parameters(), lr=5e-5)
+        optimizer = AdamW(model.parameters(), lr=self.LR_PHASE_2)
         loss_fn = torch.nn.CrossEntropyLoss()
 
-        self._train_model(model, train_data_loader, optimizer, loss_fn, EPOCHS, letter)
+        self._train_model(model, train_data_loader, optimizer, loss_fn, self.EPOCHS_PHASE_2, letter)
 
+if __name__ == "__main__":
+    # Example usage
+    trainer = Trainer()
+    dataset = get_full_dataset()  # Replace with your dataset loading method
 
-# Example usage
-trainer = Trainer()
-dataset = get_full_dataset()  # Replace with your dataset loading method
+    # Train Phase 1
+    print("Training Phase 1")
+    trainer.train_phase_1(dataset)
 
-# Train Phase 1
-print("Training Phase 1")
-#trainer.train_phase_1(dataset)
-
-# Train Phase 2
-for letter in ["A", "B", "C"]:
-    print(f"Training Phase 2 - {letter}")
-    trainer.train_phase_2(letter, dataset)
+    # Train Phase 2
+    for letter in ["A", "B", "C"]:
+        print(f"Training Phase 2 - {letter}")
+        trainer.train_phase_2(letter, dataset)

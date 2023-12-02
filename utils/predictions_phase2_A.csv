@@ -1,13 +1,13 @@
 id,sentence,predictions
 3,"Ce n'est pas étonnant, car c'est une saison mystérieuse",1
-6,"Madame, Monsieur, Votre fils Léo arrive tous les jours en retard à l'école.",1
+6,"Madame, Monsieur, Votre fils Léo arrive tous les jours en retard à l'école.",0
 7,Comment tu as trouvé le repas de ce midi,1
 9,"Je ne peux pas vous laisser dire cela, Madame.",1
 10,Est-ce que ça suffit?,0
 11,Tu as rempli le pot d'eau et tu as mis des glaçons.,1
 14,Un enfant est drôle.,0
 15,"Le jeudi est comme le mardi, on ne fait qu'aller à l'école",1
-17,Je dois acheter un tube de peinture bleue pour finir ce tableau.,1
+17,Je dois acheter un tube de peinture bleue pour finir ce tableau.,0
 18,"Elle s'appelle Joy, on parlait de tout, on s'entendait super bien !",1
 19,"Elle a trois enfants, deux garçons et une fille.",0
 24,"Quand l'ange apparaît la deuxième fois, que conseille-t-il au pêcheur ?",1
@@ -20,7 +20,7 @@ id,sentence,predictions
 34,J'ai perdu la boîte dans laquelle j'avais mis mes bijoux.,1
 35,Elle a décidé de s'y installer.,1
 38,Tu aimes ma nouvelle robe ?,0
-39,"Il vit à Paris avec ses parents et sa petite soeur Julie, âgée de 8 ans.",1
+39,"Il vit à Paris avec ses parents et sa petite soeur Julie, âgée de 8 ans.",0
 48,Quelle est la date du mariage ?,0
 49,"Le soir en hiver, j'aime bien lire près de la cheminée et faire de la cuisine.",0
 51,"Ici, c'est mon bureau.",0
@@ -29,96 +29,102 @@ id,sentence,predictions
 61,Tu es en train de laver la vaisselle à la main ?,1
 67,"Non, j'ai terminé mes études en juin dernier.",1
 70,N'importe quoi.,0
+73,Elle a passé la nuit à réviser le rapport annuel.,1
 75,"Je vois bien que tu es triste, tu ne dis rien, tu ne souris pas.",1
 80,"Moi, c'est que par rapport à mon nom de famille",1
 81,J'adore cette petite histoire.,0
+83,L'Esprit de l'hiver décide de punir les arbres qui n'ont pas apporter de l'aide à l'oiseau.,1
 84,Elle a posé son sac sur une chaise.,1
-91,"Le lundi, David reste toute la journée à l'école. Souvent, le soir, il pratique une activité musicale : le piano.",1
-94,Parfois l'activité peut se faire à domicile.,1
-96,La fée est réapparue une deuxième fois dans la forêt.,1
+91,"Le lundi, David reste toute la journée à l'école. Souvent, le soir, il pratique une activité musicale : le piano.",0
+94,Parfois l'activité peut se faire à domicile.,0
+95,C'était sa façon de le récompenser pour sa gentillesse envers le petit oiseau.,1
 97,"Oui, mais ce n'est pas trop long ?",0
 102,Je m'inquiète beaucoup pour notre relation.,1
 103,Il décide d'aller voir de plus près . Vous avez choisi votre plus beau fauteuil ?,1
-106,D'autres sont plus critiques.,1
-107,"Parfois, elle fait une bonne tarte aux fruits et elle invite des amis pour le goûter",1
+107,"Parfois, elle fait une bonne tarte aux fruits et elle invite des amis pour le goûter",0
 108,"Vous savez, je ne l'utilise que pour les cas d'urgence !",1
-111,La plage est pleine de Marseillais et de touristes,0
 117,"Bon, peut-être qu'il y en pas encore beaucoup mais de plus en plus.",1
 118,"Cher Lucas, Je t'écris de chez mes grands-parents à l'Aigle en Normandie où je passe de super vacances depuis maintenant une semaine.",1
 120,Je me prèpare d'abord et je prends mon petit déjeuner ensuite.,0
+121,"En fait, j'étais végétarien pendant longtemps, mais j'ai fini par changer de régime, parce qu'à mon avis, les plats végétariens ont un goût fade.",1
 124,Alors on se tient au courant pour samedi prochain ?,1
 130,C'est mon dernier jour dans cette école.,1
 131,"J'ai préparé le repas, il est dans la cuisine.",1
 136,C'est ce que j'ai cru comprendre.,1
 138,Je n'ai eu aucune nouvelle de lui depuis son départ.,1
+139,Quel est l'objet que le berger doit jeter au cou du dragon ?,1
 140,Je ne cherche pas quelque chose de précis,0
 146,Je te quitte pour aller travailler. Bonne visite.,0
-151,Au rythme d'une vingtaine de terrains de football par minute.,1
+149,"On n'est pas très fiers parce que de temps en temps, quand elles se bagarrent, on[ne] veut pas dire que Patricia se bagarre avec Agnès ou avec Valérie ou Michèle ou Aude ! [Elle rit]",1
 152,Ça me sert à rien.,0
 153,Il préfère quand les sommes ne sont pas arrondies.,1
-154,Y a-t-il un problème avec votre table ?,1
+154,Y a-t-il un problème avec votre table ?,0
 157,Ce qui est faux.,0
 158,Tu es vraiment la bienvenue.,0
-159,"Comme c'est proche de la maison, je peux y aller à pied, c'est très agréable",1
+159,"Comme c'est proche de la maison, je peux y aller à pied, c'est très agréable",0
 160,"Il y a 5 ans, ma famille et moi avons déménagé dans le sud de la France",1
 161,Vous rentrez à quelle heure ?,0
 166,Julie est à Lausanne pour un mois.,0
 172,D'où viens-tu ?,0
 173,C'est pas possible de leur faire faire n'importe quoi.,1
-174,Bons baisers de la Réunion où nous passons quelques jours de vacances.,0
-180,"Peux-tu me donner l'heure du déjeuner, la date et l'adresse de ton appartement",1
+180,"Peux-tu me donner l'heure du déjeuner, la date et l'adresse de ton appartement",0
+183,"C'était ce que je chantais le matin sous la douche, c'était l'objet de mes prières, ma priorité numéro un.",1
+185,"Si vous êtes au nord de Nowra, trouvez un refuge, car le feu arrive",1
 186,"Le mardi ressemble au lundi sauf qu'il n'y a pas d'activité après l'école, David rentre chez lui pour faire ses devoirs et se reposer",1
 190,Nous écoutons de la musique.,0
-195,Tu veux me montrer les lignes de code ?,1
+195,Tu veux me montrer les lignes de code ?,0
 202,Pierre est un jeune garçon de 14 ans.,0
 203,Tu gagnes de l'argent.,0
 205,"Son mari, lui, n'aime pas beaucoup la mer",0
 206,"Lundi, je suis resté à la bibliothèque jusqu'à la fermeture.",1
-208,J'aime bien ce film de 1964 parce que j'aime bien les comédies,1
+208,J'aime bien ce film de 1964 parce que j'aime bien les comédies,0
 209,Es-tu prêt?,0
 210,Il enlève (ne garde pas) ses chaussures et marche longtemps au bord de l'eau,0
 211,"Je suis une fille, je suis française et j'ai treize ans",0
+212,Elle s'est formée à l'histoire de l'art à l'âge de 30 ans.,1
 218,C'est génial que tu puisses le rencontrer!,1
 222,Je vais aller vérifier.,0
 224,Papa est en voyage jusqu'à demain.,0
-226,Je sais que tu ne connais pas Paris alors je te propose de venir passer quelques jours chez moi.,1
+226,Je sais que tu ne connais pas Paris alors je te propose de venir passer quelques jours chez moi.,0
 227,N'essayez pas de tout comprendre dès la première écoute.,1
-228,"Et vous l'utilisez, un peu, beaucoup ou rarement ?",1
+228,"Et vous l'utilisez, un peu, beaucoup ou rarement ?",0
 229,"Cet après-midi, mes amis et moi allons au cinéma.",0
 233,Il lui conseille de marcher pendant deux jours.,1
 241,"On peut encore se promener dans les bois, et admirer toutes les couleurs chaleureuses comme le rouge, l'orange et le jaune",0
 242,Je t'appelle demain,0
-243,Je ne pourrai pas venir demain avec toi faire du vélo,1
+243,Je ne pourrai pas venir demain avec toi faire du vélo,0
 245,"Bonjour mademoiselle, qu'est-ce que je vous sers ?",0
 248,Je voudrais remercier ma mère à laquelle je dois tout.,1
+249,Le but: Interdire aux jeunes de certains quartiers de sortir entre minuit (parfois 22 heures) et 6 heures du matin s'ils ne sont pas accompagnés d'un adulte.,1
 252,Max ira à l'université l'année prochaine.,0
 256,Je crois que vous savez que Christian est malade et que nous ne connaissons pas pour l'instant la durée de son absence.,1
 257,Je porte un pantalon.,0
 258,Jean va tous les jours à la plage,0
-260,Ne pas marcher dans l'herbe près du tribunal.,1
+260,Ne pas marcher dans l'herbe près du tribunal.,0
 261,Quel rêve le prince a-t-il fait ?,1
-262,"Oui, bien sûr !",0
+262,"Oui, bien sûr !",1
+266,"""Je n'ai pas l'habitude d'être en compagnie de quelqu'un vingt-quatre heures sur vingt-quatre et sept jours sur sept"", reconnaît cette chroniqueuse culinaire.",1
 267,"Un bienfaiteur est une personne qui apporte son aide, généralement en donnant de l'argent.",1
 272,"Quoi qu'il arrive, il faut rester motivé.",1
-274,"À droite de la table, il y a un fauteuil et sur le fauteuil il y a un blouson",1
+274,"À droite de la table, il y a un fauteuil et sur le fauteuil il y a un blouson",0
 280,Nous allons à la plage.,0
 283,"Comme ça, je pourrais l'utiliser plus souvent !",1
 284,"Ce dimache, c'était la fête des Mères en France.",1
 292,"Au cours suivant, elle est venue s'asseoir à côté de moi.",1
-298,J'aime aussi me promener avec mes amis en rêvant de voyages que nous pourrions faire ensemble.,1
 299,C'est notre petite tradition à nous cinq.,1
-300,Qui a pris les 100 euros ?,1
-301,"Je suis l'itinéraire donné par Pierre, un ami français",1
+300,Qui a pris les 100 euros ?,0
+301,"Je suis l'itinéraire donné par Pierre, un ami français",0
 303,Je ne trouve pas mes clés.,0
 305,Juste un moment.,0
-306,La forêt leur donne du bois et du gibier.,1
+306,La forêt leur donne du bois et du gibier.,0
 309,"A quelle saison, les serpents vont dormir dans la terre ?",1
-316,Mon mari est professeur d'anglais dans une école qui se trouve à 20 kilomètres de la maison.,1
-318,"Entre les deux, il y a le gris : c'est un mélange de blanc et de noir.",0
+316,Mon mari est professeur d'anglais dans une école qui se trouve à 20 kilomètres de la maison.,0
+318,"Entre les deux, il y a le gris : c'est un mélange de blanc et de noir.",1
 319,Vous parlez bien anglais.,0
-324,Ils ont passé une très bonne soirée,0
+324,Ils ont passé une très bonne soirée,1
 325,Elle va souvent au cinéma,0
 328,Le héros meurt à la fin du film.,1
+329,Il n'y a pas beaucoup de différences dans le développement du langage entre un enfant bilingue et un enfant monolingue.,1
 331,"Je ne vais pas très vite, mais il ralentit toujours pour moi",1
 332,C'est une femme pleine de vertus.,0
 334,"Dans la classe, il est interdit de fumer",1
@@ -136,12 +142,11 @@ id,sentence,predictions
 368,"Tous les ans, Jean passe ses vacances dans un grand hôtel du Sud de la France",0
 371,Là-bas tout le monde parle anglais ! Londres est différent de Paris.,0
 373,Je n'aime pas le fromage.,0
-375,Elle a acheté des vêtements : un beau pull chaud et et une belle robe,0
-376,"Aujourd'hui, je suis très occupé",1
+376,"Aujourd'hui, je suis très occupé",0
 378,"Comme nous, ce sont des survivants.",1
 381,Il y a beaucoup d'avantages à Paris,0
-382,Quelles tâches pourraient-ils accomplir?,1
-383,"Elle est très sportive, elle adore la nature et elle a horreur d'aller dans les discothèques.",1
+382,Quelles tâches pourraient-ils accomplir?,0
+383,"Elle est très sportive, elle adore la nature et elle a horreur d'aller dans les discothèques.",0
 387,Je vois mon père un week-end sur deux.,0
 389,"À force de ne pas faire attention, vous allez finir par vous faire mal !",1
 391,Ils se sont fait des copains et sont heureux de vivre en France,1
@@ -149,55 +154,51 @@ id,sentence,predictions
 396,Je n'avais jamais vu ça avant !,1
 399,La cuillère n'existe pas.,0
 401,"Oui, vous voyagez en première ou en seconde ?",0
-402,"Oui, et ils sont bons !",0
-406,La météo est le sujet de prédilection sur les réseaux sociaux,1
+402,"Oui, et ils sont bons !",1
 407,Ils se sont beaucoup promenés,0
-408,On ne se sent plus chez soi.,1
+408,On ne se sent plus chez soi.,0
 418,Les Américains ont bien de la chance,1
 419,"Quand la tarte est cuite, la sortir du four et la retourner pour la servir.",1
-420,J'ai eu une bonne note en Français aujourd'hui.,1
 423,Mets la bougie dans le pot.,0
 424,Elle n'est plus la même depuis qu'elle a eu l'accident.,1
 426,Et l'argent qu'il va falloir rendre !,1
 429,C'est une sorte de monstre à deux têtes.,1
 430,J'ai des cours de méchanique et d'informatique.,0
-431,"Je veux dire, vraiment triste.",1
+431,"Je veux dire, vraiment triste.",0
 434,J'habite à New York.,0
 435,Vous êtes marié(e) ?,0
 438,"A 55 ans, on est mort.",1
 439,"Le premier s'appelle Thomas, il a quatorze ans",0
 441,"Souvent, lorsque l'on a un animal à la maison, on souhaite qu'il ne manque de rien et encore moins de nourriture.",1
 444,"Personne n'en a autant fait, depuis dix ans.",1
-445,Nous avions besoin d'aide.,1
+445,Nous avions besoin d'aide.,0
 447,"Par ici, les mariés.",0
-451,Il n'aime pas donner les billets de vingt ou de cinquante euros.,1
+451,Il n'aime pas donner les billets de vingt ou de cinquante euros.,0
 452,"Ton père est dans le jardin, il arrose les fleurs.",0
 453,Tu n'as pas oublié ! Tu as nettoyé la maison.,1
 454,"Quand le téléphone a sonné, on a répondu immédiatement.",1
 455,Je ne parle pas bien français.,0
-463,"Pas le casser, quoi.",1
-464,Tu es heureuse que les spectateurs aient applaudi.,1
+463,"Pas le casser, quoi.",0
 467,N'oubliez pas votre appareil photo !,0
 469,"Et puis, dans la famille, personne chantait",1
 470,"Moi, je suis français!",0
 471,"Chaque matin, je prends mon petit déjeuner à 8 heures.",0
-472,"On dansera sur les tubes du Club Dorothée et ""Le Prince de Bel Air""",0
-473,Il demande de l'aide à une alouette.,1
+473,Il demande de l'aide à une alouette.,0
 475,"La nuit tombait, il faisait un vent froid.",1
 478,"Elle aime les contes et les histoires fantastiques, et de temps en temps, je me dis qu'elle sort tout droit d'une de ces histoires-là.",1
-479,Surtout avec les nouvelles technologies.,1
 482,Où je peux acheter un billet de train,0
-486,C'est lui redonner confiance en lui.,1
-487,Tu as aimé ce livre de poésies ?,1
+487,Tu as aimé ce livre de poésies ?,0
+491,"Je vais leur demander de se calmer, pour que vous puissiez profiter de votre repas dans le calme.",1
 492,"Je m'appelle Angélica Summer, j'ai 12 ans et je suis canadienne.",0
-495,"Ou alors, on joue sur mon ordinateur.",1
+493,Elle ne leur a pas révélé son secret.,1
+495,"Ou alors, on joue sur mon ordinateur.",0
 500,Plus personne ne sautait sur le canapé depuis longtemps.,1
 502,Tu ne trouves pas ça difficile ?,0
-506,Comment le prince est-il vêtu ?,1
+506,Comment le prince est-il vêtu ?,0
 509,"Je m'appelle Camille et quand j'étais enfant, j'avais des rêves plein la tête.",1
-516,Il est un boulot long et difficile.,0
+516,Il est un boulot long et difficile.,1
 517,Qu'as-tu mangé ?,0
-522,"Nous nous voyons assez souvent, elle vient même parfois à la maison et nous faisons nos devoirs ensemble.",1
+522,"Nous nous voyons assez souvent, elle vient même parfois à la maison et nous faisons nos devoirs ensemble.",0
 524,Je vous vends des livres.,0
 525,"Les invités voulaient boire du champagne, mais il n'y en avait plus.",1
 528,"Mais cette année-là, l'hiver est très rude.",1
@@ -205,7 +206,7 @@ id,sentence,predictions
 537,C'est le quartier des beaux magasins et des produits de grandes marques,0
 541,Je suis médecin.,0
 542,Je suis née aux Pays-Bas,0
-543,J'ai trouvé un stage qui me plaît beaucoup.,1
+543,J'ai trouvé un stage qui me plaît beaucoup.,0
 544,Je m'appelle Hugo et j'ai seize ans.,0
 546,Bonne idée.,0
 547,"Non, bien sûr ; mais ce que je veux dire c'est que nos préoccupations ont changé.",1
@@ -213,7 +214,7 @@ id,sentence,predictions
 551,J'étais fier !,1
 556,Rosa : Ça n'a pas beaucoup changé ici depuis 40 ans !,1
 558,"Aujourd'hui, je vais te présenter ma famille",1
-561,Comment les reconnaître?,1
+561,Comment les reconnaître?,0
 563,J'ouvre la porte et le chien court à l'extérieur.,0
 566,"Le soir, je suis rentré vraiment fatigué mais heureux.",1
 573,"Après avoir bu une tasse de thé dans un café, je rentre chez moi en bus",0
@@ -221,13 +222,14 @@ id,sentence,predictions
 578,"Excusez-moi, ça fait 30 minutes qu'on attend notre table.",1
 581,"Mais devenir l'ami d'une fille super, c'est difficile !",1
 583,Je n'ai pas de voiture et je n'aime pas beaucoup prendre le métro,0
+585,Elle ne doit pas dégoûter les élèves.,1
+588,"Quand on m'a proposé de jouer dans ce film, j'ai répondu oui tout de suite, j'ai dit que j'avais attendu cette occasion toute ma vie.",1
 589,Je répare votre voiture.,0
 590,"OK, pas de problème.",0
-591,Ta soeur est venue hier nous rendre visite.,1
+591,Ta soeur est venue hier nous rendre visite.,0
 593,"Il fait trop chaud, j'ouvre la fenêtre.",0
 594,Le premier part à sept heures vingt cinq et le deuxième part à neuf heures et demie,0
 597,La journée est longue pour David qui attend le samedi toute la semaine,1
-598,La plupart des spectateurs ont apprécié la pièce de théâtre.,1
 601,"Alors, je les ai remises et j'ai vu son sourire.",1
 602,"David, lui, va à l'école le mercredi matin.",0
 603,J'attends ta réponse,0
@@ -239,62 +241,68 @@ id,sentence,predictions
 621,C'est l'école qui doit le trouver.,1
 622,Miam ! Tu dois avoir hâte de la revoir !,1
 623,La cuisine est la pièce préférée de ma maison,1
-625,Je crains que la table ne soit pas encore disponible.,1
+625,Je crains que la table ne soit pas encore disponible.,0
 626,Je suis vraiment désolé : j'ai oublié d'acheter de la viande en rentrant !,1
+627,Mon chapeau s'est envolé quand je suis monté sur le voilier.,1
 629,Elle a dansé toute la nuit.,1
-630,"Ça oui, j'attends les vacances d'été avec impatience !",0
+630,"Ça oui, j'attends les vacances d'été avec impatience !",1
 633,Donne-moi la serviette !,0
 635,Il fait toujours chaud,0
 638,"Au menu de ce midi, ce sont les restes du repas",1
 641,Pourquoi as-tu quitté Limoges ?,1
-643,Je garde la forme en aidant de temps en temps à la maison ou dans le jardin.,1
+643,Je garde la forme en aidant de temps en temps à la maison ou dans le jardin.,0
 647,Quel âge ont-ils ?,0
 650,"Pour moi l'école d'aujourd'hui elle ne marche pas parce que justement on tente de la faire reposer sur des histoires, enfin sur des valeurs comme vous dites, qui sont du passé.",1
 651,"Merci Gaio de suivre ces histoires, cela me fait très plaisir !",1
-656,Mon frère Patrice est plus jeune que moi.,1
+656,Mon frère Patrice est plus jeune que moi.,0
 658,Les maths font-elles peur aux femmes ?,1
-661,J'ai vraiment dû beaucoup insister pour être choisi !,1
 662,Tu vas à l'université ?,0
-663,"Secourir : ce verbe est synonyme d'aider une personne qui est en danger, porter secours à quelqu'un.",1
+664,"Je voulais faire de la musique pour essayer avec mes potes et en voyant que ça a pris, je m'y suis mis sérieusement",1
 665,La bibliothèque était déjà fermée quand j'y suis allé hier après-midi.,1
 671,"Cela remonte à il y a bien longtemps. C'était l'hiver, la veille du jour de Noël.",1
-672,N'oublie pas de venir avec des chaussures de sport.,1
+672,N'oublie pas de venir avec des chaussures de sport.,0
 673,"J'y vais le lundi, le mardi et le mercredi",0
 674,Tu peux me prêter ton stylos s'il-te-plaît ?,0
 675,Il est danois.,0
 676,J'ai peur qu'il soit parti sans laisser d'adresse,1
 677,Les enfants se sont racontés des histoires avant de s'endormir.,1
 679,il appelle un docteur !,0
+684,"En effet, il n'est pas normal qu'un enfant ou un ado de moins de treize ans erre en pleine nuit dans les rues.",1
 686,C'est très difficile.,0
 689,"Cette fois, les femmes et les enfants marchent au milieu du groupe.",1
+690,La police a ordonné de ne pas poser de questions personnelles.,1
 691,"Au moment de payer, notre petit garçon est toujours volontaire",1
 693,Je suis bien contente que tu aies apprécié cette histoire.,1
 696,"Salut, qu'est-ce que tu fais là ?",0
 698,Il vient à la cérémonie ce soir,0
 699,Comment le Berger arrive-t-il à sortir de la grotte ?,1
 700,Il me reste une place.,0
-702,Vivre à la campagne a beaucoup d'avantages,0
 705,Nous vous souhaitons un bon voyage.,0
+707,"Il y a 100 ans, cette pièce de monnaie valait peu d'argent.",1
+708,"Il me pose quelques questions sur ma vie, j'ai peur de ne dire que des sottises et je réponds à peine.",1
 711,"En général, c'est à ce moment-là que je me rends compte que je suis en retard",1
 714,Je te donne ma réponse demain,0
 715,Pouvez-vous m'aidez ?,0
 717,"Il signifie ""avoir le courage de faire quelque chose"".",1
-718,J'ai un garage pour ma voiture et pour mon vélo,1
+718,J'ai un garage pour ma voiture et pour mon vélo,0
 719,"Ce n'est pas l'idéal, mais on n'a pas le choix",1
 730,Je n'en ai aucune idée.,0
-733,"Et aujourd'hui, je suis artiste.",1
+733,"Et aujourd'hui, je suis artiste.",0
 739,La cuisine est la pièce préférée de ma maison.,1
 742,"Nous les jeunes aujourd'hui on veut être plus écoutés ; on veut que l'école nous prépare à trouver du boulot, enfin du travail, quoi.",1
-743,"Bonsoir, madame, en quoi puis-je vous aider ?",1
+743,"Bonsoir, madame, en quoi puis-je vous aider ?",0
 746,Je suis blanc ou noir,0
 748,C'est une fête chrétienne qui célèbre la naissance de Jésus.,1
+749,"Finalement, que réalise le berger une fois qu'il a repris ses esprits ?",1
 754,"Hier soir, j'ai travaillé jusqu'à minuit.",1
 761,Vous vous levez à quelle heure ?,0
 762,J'ai ouvert la porte et le chien a couru comme une flèche à l'extérieur.,1
 764,Il y a des régions où les enfants ne vont pas à l'école le mercredi,1
 767,"Oui, mais qui fait cela ?",1
 768,Ma soeur habite également dans la même ville que nous.,0
-779,Son bureau est entre la bibliothèque et la salle de dessin.,1
+779,Son bureau est entre la bibliothèque et la salle de dessin.,0
+788,"Mais dans leur vie quotidienne, comme à l'école ou avec leurs copains, c'est clair, c'est le français qui l'emporte.",1
+789,"Ce n'est qu'en Irlande, là où vit ma famille, et au bout de quelques semaines, qu'il fait des phrases en anglais.",1
 790,"La semaine, je me lève à six heures du matin et mon mari à huit heures.",0
 791,Le jour ressemblait à la nuit.,1
 792,"On a envie de savoir, de comprendre et de se détendre.",1
@@ -302,15 +310,15 @@ id,sentence,predictions
 795,Il pleurait à chaque fois.,1
 800,"Enfin, on trouve aussi le blanc, comme la neige, et le noir, comme la nuit.",0
 801,"Il trouve qu'il fait trop chaud, alors il s'est ennuyé",1
-807,Elle est plus âgée que moi.,1
+807,Elle est plus âgée que moi.,0
 809,"Ce soir, nous mangeons du poisson et des pommes de terre au dîner",0
 813,Qu'est-ce que ça veut dire ?,0
 815,"C'est dommage parce que des fois, j'aimerais bien lui poser des questions et lui demander des conseils.",1
 816,"Non, ne mange pas votre goûté dans la classe !",1
 818,"Nous avons beaucoup de chance de pouvoir manger des légumes frais du jardin tous les jours : salade, tomates, carottes, chou, radis, pommes de terre, .",1
 823,Tanguy ne veut pas aller à la mer le mois prochain,0
-824,"Enfin, Pâques n'a pas de date fixe, c'est un dimanche compris entre le 22 mars et le 25 avril.",0
-829,Jules fait beaucoup de bruit derrière la porte.,1
+824,"Enfin, Pâques n'a pas de date fixe, c'est un dimanche compris entre le 22 mars et le 25 avril.",1
+829,Jules fait beaucoup de bruit derrière la porte.,0
 830,Ça fait un moment que je n'ai pas appelé mes parents pour prendre de leurs nouvelles.,1
 832,"Demain, on prévoit de faire une promenade dans le quartier de la Petite France, il paraît que c'est le plus beau de Strasbourg",1
 833,Il ne vient pas à la fête ce soir,0
@@ -319,7 +327,7 @@ id,sentence,predictions
 841,C'est facile !,0
 845,On doit écouter le professeur et étudier,1
 846,Il a les cheveux raides.,0
-857,J'ai un rendez-vous urgent à l 'extérieur.,1
+857,J'ai un rendez-vous urgent à l 'extérieur.,0
 858,On a de la chance !,0
 860,J'ai quatre pattes,0
 861,La femme avait préparé une saucisse et du pain pour le dîner.,1
@@ -333,27 +341,29 @@ id,sentence,predictions
 889,Je suis débutante.,0
 892,Je suis en vacances !,0
 899,Pourquoi tu n'as pas acheté cette antiquité ?,1
-905,C'était un saint homme.,1
+905,C'était un saint homme.,0
+906,C'était pour moi une question de vie ou de mort.,1
 908,Où est la salle 33 ?,0
 909,Je vais prendre le steak frites.,0
 910,J'ai déjà mangé.,0
 911,On a commencé il y a un mois pour nous préparer petit à petit à la transition,1
-920,Mais ce n'est pas le cas,1
+920,Mais ce n'est pas le cas,0
 927,C'est un endroit magnifique pour la baignade et l'escalade.,0
 928,Je suis architecte. Et toi ?,0
 929,Peux-tu répéter cela?,0
+933,"Ce sont des pères, point final.",0
 937,Ce chien m'apporte beaucoup de bonheur.,0
 938,"Cette histoire parle d'un berger qui une fois dans la montage avec ses moutons, entend un petit bruit.",1
 946,"Lundi, je retourne à l'école",0
 950,"Hier, j'ai décidé de m'offrir une belle journée.",1
 953,Elle pouvait supporter tout cela.,1
-955,Elle est au chômage en ce moment,1
+955,Elle est au chômage en ce moment,0
+956,"Je suis allé une fois en thalassothérapie, il y a deux ans.",1
 957,"Le jour de la rentrée au collège, Pierre fait connaissance avec un nouvel élève de sa classe.",1
 960,Tu envoyais un message à tes amis chaque soir avant de te coucher.,1
 961,C'est le cas par exemple des agriculteurs,1
 966,"Mon mari et moi avons deux enfants, une fille de sept ans et un garçon de trois ans.",0
 968,J'ai décidé de peindre les murs en jaune et d'y installer mon piano,1
-969,Je te présente Sophie dont je t'ai souvent parlé laquelle expose ses oeuvre à la Ventooz'Art.,1
 970,"Et vous avez la marionnette à fils, où le manipulateur est au-dessus et la marionnette a des fils reliés à l'animateur.",1
 972,Ce n'est pas la première fois qu'une catastrophe écologique se produit dans la région,1
 973,Est-ce qu'il y a du pain?,0
@@ -362,14 +372,13 @@ id,sentence,predictions
 982,Mais la musique m'a donné mal à la tête,1
 983,"En général, elle loue une maison à la campagne",0
 984,Que se passe-t-il?,0
-985,Vous allez piloter ce fichu avion et m'amener en Amérique du Sud.,1
 987,Pourquoi le pacha est admiré de tous ?,1
 989,Ils disaient que c'était grâce à eux que la forêt était si belle.,1
-990,"Le paradis, je vous le dis.",0
+990,"Le paradis, je vous le dis.",1
 991,Regardez-moi ce tas de feuilles !,0
 994,Qu'arrive-t-il aux arbres à la fin de l'histoire ?,1
 998,"Pour se déplacer, il y a des bus, des vélos et un métro.",0
-1000,"Il y a aussi quelques arbres fruitiers comme un cerisier, un pommier, un abricotier, . mais aussi des fraisiers : je me régale et je fais le plein de vitamines !",0
+1000,"Il y a aussi quelques arbres fruitiers comme un cerisier, un pommier, un abricotier, . mais aussi des fraisiers : je me régale et je fais le plein de vitamines !",1
 1003,"Oui, nous allons bien.",0
 1006,Je vais chez le dentiste l'après-midi mais je suis libre le soir,0
 1011,Quel est cet animal ?,0
@@ -379,46 +388,46 @@ id,sentence,predictions
 1019,Folio est la gardienne de l'appartement.,0
 1021,Mère est dans le jardin derrière la maison.,0
 1022,"Et bien sûr, nous irons faire du shopping à Oxford Street et dans le quartier de Covent Garden",0
-1023,Nous ne privons plus du bonheur de manger,1
+1025,Vous ne risquerez pas de vous ennuyer dans un lieu aussi animé,1
+1029,"Ce qui me plaît surtout, c'est le silence de la montagne.",1
+1030,"Autrefois, on allumait toutes les bougies de la maison le soir de la Chandeleur.",1
 1032,"Je suis désolé, j'ai oublié mes devoirs à la maison.",1
 1037,Il fait encore nuit.,0
+1038,"À la sortie du Covid, tout était annulé, un peu compliqué, on a eu vraiment très peur et ben, c'est parti du jour au lendemain.",1
 1042,"J'adore ma grand-mère, elle très gentille.",0
 1043,C'est la seule façon de s'en sortir !,1
 1047,Le chat s'est alors accroché au coussin et Simon ne l'a pas vu.,1
 1049,"Ou alors, c'est moi qui ai plus de mal à le supporter parce que j'ai envie de savoir ce qui arrive à Sarah.",1
 1051,"En général, je me lève assez tôt tous les matins",0
+1052,"Si tu voulais, tu pouvais te joindre à la manifestation populaire.",1
 1054,Elle est belge.,0
+1062,"Quand le berger revint à lui , il vit qu'il était sur la montagne, et au bout de quelques minutes il s'aperçut qu'il avait fait un mauvais rêve, car son chien était à côté de lui, les moutons autour de lui, et c'était en automne tout comme quand il s'était endormi quelques heures avant.",1
 1065,Il fait froid en hiver.,0
-1069,Cette personne que tu as rencontrée hier au restaurant et dont t'as parlé Paul est dangereuse,1
 1076,Le chat et la souris.,0
-1077,"Moi, je ne vais jamais chez elle.",1
+1077,"Moi, je ne vais jamais chez elle.",0
 1079,"Je suis désolée, elle n'est pas là.",0
-1080,Vous ne pouvez pas commencer votre journée sans votre bol de chocolat chaud ?,1
+1080,Vous ne pouvez pas commencer votre journée sans votre bol de chocolat chaud ?,0
 1081,Le prof de planche à voile est agréable.,0
-1082,La cloche de l'école sonne à quatorze heures pour que tout le monde retourne en classe jusqu'à dix-sept heures.,1
+1082,La cloche de l'école sonne à quatorze heures pour que tout le monde retourne en classe jusqu'à dix-sept heures.,0
 1086,À midi il prend un sandwich dans un café,0
-1088,"Chaque soir, j'accompagne ma mère en vélo pour faire une promenade dans le parc avec notre chien Snowy.",1
+1088,"Chaque soir, j'accompagne ma mère en vélo pour faire une promenade dans le parc avec notre chien Snowy.",0
 1089,La meilleure amie d'un garçon est sa mère.,1
-1090,"J'ai grandi dans une famille binationale, mon père est français et ma mère vient du Royaume Uni, donc je suis parfaitement bilingue",0
 1091,J'ai visité une maison dont j'ai oublié l'adresse,1
 1098,Y a moyen de moyenner.,0
-1099,Je suis secrétaire et je m'occupe de mes deux enfants quand ils rentrent de l'école.,1
-1100,Il est ingénieur dans une societé d'informatique.,0
+1099,Je suis secrétaire et je m'occupe de mes deux enfants quand ils rentrent de l'école.,0
 1101,Aimerais-tu un verre?,0
 1109,Nous avons beaucoup de chance de pouvoir manger des légumes frais du jardin tous les jours.,1
 1111,Je m'appelle Jean.,0
+1114,"Par exemple, je suis allée dans une librairie et, arrêté devant celle-ci, au volant de sa voiture, il y avait Leonardo DiCaprio.",1
 1117,C'était super !,0
-1119,J'écoute des dialogues tous les jours.,1
+1119,J'écoute des dialogues tous les jours.,0
 1120,"Oui, vous partez quand ?",0
 1124,"En regardant ma mère, j'ai appris à cuisiner.",1
 1125,"C'est le fils mon père, mais ce n'est pas mon frère.",1
-1127,De quelle personne le voyageur est-il le favori ?,1
 1128,"On le fête avec ses amis ou sa famille, et on souhaite ""bonne année !"" à ses proches.",1
 1130,Nous avons un cours de Français.,0
 1133,"Le soir, elle a dîné dans un restaurant avec son frère",1
-1134,Tu as détesté ce restaurant parce que la nourriture était très épicée.,1
 1135,"Pas de diplôme, pas de boulot.",0
-1137,Félix n'arrête pas de manger des bredele (des biscuits spéciaux d'ici),1
 1138,"Je ne sais pas où est sa mère, ni même si elle vit encore, je ne sais pas si elle a des frères et des soeurs quelque part, je ne sais pas ce que fait son père.",1
 1139,Personne n'a échoué: ils ont tous réussi.,1
 1142,Qui c'est qui t'as nourri ?,1
@@ -430,11 +439,12 @@ id,sentence,predictions
 1167,Je regrette que Cécile ne voulait pas venir hier soir.,1
 1170,Où habites-tu ?,0
 1176,Elle a des amies.,0
+1177,Quel est l'état d'esprit du pêcheur après être allé en ville ?,1
 1178,"C'est mon restaurant préféré, j'y suis allé deux fois cette semaine!",1
-1179,Est-ce que tu voudrais venir avec nous ?,1
-1181,"Enfin, l'été arrive à la fin du mois de juin.",0
-1182,Qu'est-ce que vous pensez de cette idée ?,1
-1183,"Enfin, Pâques n'a pas de date fixe, c'est un dimanche compris entre le 22 mars et le 25 avril",1
+1179,Est-ce que tu voudrais venir avec nous ?,0
+1181,"Enfin, l'été arrive à la fin du mois de juin.",1
+1182,Qu'est-ce que vous pensez de cette idée ?,0
+1183,"Enfin, Pâques n'a pas de date fixe, c'est un dimanche compris entre le 22 mars et le 25 avril",0
 1185,Le 8 mai est la fête de la Victoire.,1
 1187,L'histoire de ce livre est incroyable,1
 1192,Je n'aime pas le pain.,0
