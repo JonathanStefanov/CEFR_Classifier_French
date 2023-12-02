@@ -46,6 +46,9 @@ def main():
 
             st.write(f"Training Phase 2 - {letter}")
             trainer.train_phase_2(letter, dataset)
+            st.write(f"Training Phase 2 - {letter} Complete")
+        
+        st.write("Training Complete")
 
 if __name__ == "__main__":
     main()
