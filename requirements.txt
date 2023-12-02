@@ -3,3 +3,4 @@ torch
 sentencepiece
 transformers
 torchvision
+stqdm

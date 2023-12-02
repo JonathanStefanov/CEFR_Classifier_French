@@ -8,7 +8,7 @@ from stqdm import stqdm
 class Predictor:
 
     def __init__(self):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
+        self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
         self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
