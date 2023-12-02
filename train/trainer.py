@@ -41,7 +41,7 @@ class FrenchSentencesDataset(Dataset):
 # Define the Trainer class
 class Trainer:
     def __init__(self, max_len=387, batch_size=16, epochs_phase_1=3, epochs_phase_2=2, lr_phase_1=5e-5, lr_phase_2=5e-5):
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "mps")
+        self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = max_len
         self.BATCH_SIZE = batch_size
         self.EPOCHS_PHASE_1 = epochs_phase_1
