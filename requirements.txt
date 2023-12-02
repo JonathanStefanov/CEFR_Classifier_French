@@ -2,3 +2,4 @@ pandas
 torch
 sentencepiece
 transformers
+torchvision
