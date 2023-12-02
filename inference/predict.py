@@ -2,7 +2,7 @@ import pandas as pd
 import torch
 from transformers import CamembertTokenizer, CamembertForSequenceClassification
 from torch.utils.data import DataLoader, Dataset
-from tqdm import tqdm
+from stqdm import stqdm
 
 # Define a class for the Predictor
 class Predictor:
@@ -46,7 +46,7 @@ class Predictor:
         predictions = []
 
         with torch.no_grad():
-            for batch in tqdm(data_loader, desc="Predicting..."):
+            for batch in stqdm(data_loader, desc="Predicting..."):
                 input_ids = batch['input_ids'].to(self.device)
                 attention_mask = batch['attention_mask'].to(self.device)
 
@@ -74,35 +74,36 @@ class Predictor:
         data['predictions'] = predictions
         # Check if the model path ends with A.pth, B.pth or C.pth
         if phase == 1:
-            output_file_path = 'inference/predictions_phase1.csv'
+            output_file_path = 'results/predictions_phase1.csv'
         else:
-            output_file_path = f'inference/predictions_phase2_{model_path[-5]}.csv'
+            output_file_path = f'results/predictions_phase2_{model_path[-5]}.csv'
 
         data.to_csv(output_file_path, index=False)
 
         return predictions
 
-# Example usage
-predictor = Predictor()
-unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
-model_path_phase1 = 'phase1.pth'  # Replace with your Phase 1 model path
+if __name__ == "__main__":
+    # Example usage
+    predictor = Predictor()
+    unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
+    model_path_phase1 = 'phase1.pth'  # Replace with your Phase 1 model path
 
-# Phase 1 Inference
-df = pd.read_csv(unseen_data_path)
-predictions_phase1 = predictor.inference_phase(1, model_path_phase1, df)
+    # Phase 1 Inference
+    df = pd.read_csv(unseen_data_path)
+    predictions_phase1 = predictor.inference_phase(1, model_path_phase1, df)
 
-# Further processing based on Phase 1 predictions
-df_A = df[df['predictions'] == 0].reset_index(drop=True)
-df_B = df[df['predictions'] == 1].reset_index(drop=True)
-df_C = df[df['predictions'] == 2].reset_index(drop=True)
+    # Further processing based on Phase 1 predictions
+    df_A = df[df['predictions'] == 0].reset_index(drop=True)
+    df_B = df[df['predictions'] == 1].reset_index(drop=True)
+    df_C = df[df['predictions'] == 2].reset_index(drop=True)
 
-# Phase 2 Inference
-model_path_A = 'phase_2_A.pth'  # Replace with your Phase 2 model path
-model_path_B = 'phase_2_B.pth' 
-model_path_C = 'phase_2_C.pth'  
+    # Phase 2 Inference
+    model_path_A = 'phase_2_A.pth'  # Replace with your Phase 2 model path
+    model_path_B = 'phase_2_B.pth' 
+    model_path_C = 'phase_2_C.pth'  
 
-predictor.inference_phase(2, model_path_A, df_A)
-predictor.inference_phase(2, model_path_B, df_B)
-predictor.inference_phase(2, model_path_C, df_C)
+    predictor.inference_phase(2, model_path_A, df_A)
+    predictor.inference_phase(2, model_path_B, df_B)
+    predictor.inference_phase(2, model_path_C, df_C)
 
-print("Predictions saved to inference directory.")
+    print("Predictions saved to inference directory.")

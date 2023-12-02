@@ -1,5 +1,24 @@
 import pandas as pd
-"""
+# Load the data from a CSV file
+data_path = 'utils/predictions_phase2_A.csv'  # Replace with the path to your CSV file
+df = pd.read_csv(data_path)
+
+# Function to convert predictions
+def convert_prediction(prediction):
+    return 'A1' if prediction == 0 else 'A2'
+
+# Apply the conversion function to the 'predictions' column
+df['difficulty'] = df['predictions'].apply(convert_prediction)
+
+# Drop the original 'predictions' column
+df.drop('predictions', axis=1, inplace=True)
+
+# Save the modified dataframe back to a CSV file
+output_path = 'utils/p2A.csv'  # Replace with your desired output file path
+df.to_csv(output_path, index=False)
+
+print("Data processing complete. File saved as:", output_path)
+
 
 # Load the data from a CSV file
 data_path = 'utils/predictions_phase2_B.csv'  # Replace with the path to your CSV file
@@ -21,7 +40,27 @@ df.to_csv(output_path, index=False)
 
 print("Data processing complete. File saved as:", output_path)
 
-"""
+
+
+# Load the data from a CSV file
+data_path = 'utils/predictions_phase2_C.csv'  # Replace with the path to your CSV file
+df = pd.read_csv(data_path)
+
+# Function to convert predictions
+def convert_prediction(prediction):
+    return 'C1' if prediction == 0 else 'C2'
+
+# Apply the conversion function to the 'predictions' column
+df['difficulty'] = df['predictions'].apply(convert_prediction)
+
+# Drop the original 'predictions' column
+df.drop('predictions', axis=1, inplace=True)
+
+# Save the modified dataframe back to a CSV file
+output_path = 'utils/p2C.csv'  # Replace with your desired output file path
+df.to_csv(output_path, index=False)
+
+print("Data processing complete. File saved as:", output_path)
 
 # Define the file paths
 file_A = 'utils/p2A.csv'
