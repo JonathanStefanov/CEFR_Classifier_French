@@ -5,6 +5,13 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from inference.predict import Predictor  # Ensure this import works correctly in your Streamlit environment
 
+def verify_csv_structure(df):
+    expected_columns = ['id', 'sentence']
+    if df.columns.tolist() == expected_columns and len(df.columns) == 2:
+        return True
+    else:
+        return False
+
 def process_file(input_path, output_path, conversion_func):
     df = pd.read_csv(input_path)
     df['difficulty'] = df['predictions'].apply(conversion_func)
@@ -25,6 +32,14 @@ def main():
     uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
     if uploaded_file is not None:
         data = pd.read_csv(uploaded_file)
+
+        if verify_csv_structure(data):
+            st.success("The CSV file structure is correct.")
+        else:
+            st.error("The CSV file does not have the correct structure. It should only contain 'id' and 'sentence' columns.")
+            return
+
+
         st.write("Uploaded Data:")
         st.write(data.head())  # Display the first few rows of the uploaded file
 
