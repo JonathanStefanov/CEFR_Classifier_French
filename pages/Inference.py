@@ -1,9 +1,17 @@
 import streamlit as st
 import os
+import base64
 import pandas as pd
 import sys
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from inference.predict import Predictor  # Ensure this import works correctly in your Streamlit environment
+
+def get_table_download_link(df):
+    """Generates a download link to allow the data in a DataFrame to be downloaded as a CSV."""
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:file/csv;base64,{b64}" download="submission.csv">Download CSV file</a>'
+    return href
 
 def verify_csv_structure(df):
     expected_columns = ['id', 'sentence']
@@ -78,6 +86,9 @@ def main():
 
             st.success("Processing complete. Combined file saved as 'submission.csv'.")
             st.write(combined_df.head())  # Optionally display the first few rows
+
+            # Create a download link for the processed file
+            st.markdown(get_table_download_link(combined_df), unsafe_allow_html=True)
 
 
 if __name__ == "__main__":

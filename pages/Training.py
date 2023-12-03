@@ -15,7 +15,7 @@ def main():
     st.title("Model Training Interface")
 
     # File Uploader
-    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+    uploaded_file = st.file_uploader("Upload additional CSV files", type=["csv"])
     if uploaded_file is not None:
         # To read and display the uploaded file
         dataframe = pd.read_csv(uploaded_file)
