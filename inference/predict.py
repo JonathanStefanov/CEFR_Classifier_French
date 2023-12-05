@@ -9,9 +9,6 @@ class Predictor:
 
 <<<<<<< HEAD
     def __init__(self, model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth'):
-=======
-    def __init__(self):
->>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
         self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
@@ -63,11 +60,7 @@ class Predictor:
                 predictions.extend(preds.tolist())
 
         return predictions
-<<<<<<< HEAD
     def inference_phase(self, phase, data, letter=None):
-=======
-    def inference_phase(self, phase, model_path, data):
->>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
         # Load model
         num_labels = 3 if phase == 1 else 2
         model_path = self.model_path_phase1 if phase == 1 else (self.model_path_phase2_A if letter == 'A' else (self.model_path_phase2_B if letter == 'B' else self.model_path_phase2_C))
@@ -98,22 +91,12 @@ class Predictor:
 
 if __name__ == "__main__":
     # Example usage
-<<<<<<< HEAD
     predictor = Predictor(model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth')
     unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
 
     # Phase 1 Inference
     df = pd.read_csv(unseen_data_path)
     predictions_phase1 = predictor.inference_phase(1, df)
-=======
-    predictor = Predictor()
-    unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
-    model_path_phase1 = 'phase1.pth'  # Replace with your Phase 1 model path
-
-    # Phase 1 Inference
-    df = pd.read_csv(unseen_data_path)
-    predictions_phase1 = predictor.inference_phase(1, model_path_phase1, df)
->>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
 
     # Further processing based on Phase 1 predictions
     df_A = df[df['predictions'] == 0].reset_index(drop=True)
@@ -121,19 +104,8 @@ if __name__ == "__main__":
     df_C = df[df['predictions'] == 2].reset_index(drop=True)
 
     # Phase 2 Inference
-<<<<<<< HEAD
-
     predictor.inference_phase(2, df_A, 'A')
     predictor.inference_phase(2, df_B, 'B')
     predictor.inference_phase(2, df_C, 'C')
-=======
-    model_path_A = 'phase_2_A.pth'  # Replace with your Phase 2 model path
-    model_path_B = 'phase_2_B.pth' 
-    model_path_C = 'phase_2_C.pth'  
-
-    predictor.inference_phase(2, model_path_A, df_A)
-    predictor.inference_phase(2, model_path_B, df_B)
-    predictor.inference_phase(2, model_path_C, df_C)
->>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
 
     print("Predictions saved to inference directory.")
