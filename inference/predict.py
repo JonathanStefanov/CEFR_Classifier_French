@@ -90,6 +90,27 @@ class Predictor:
 
         return predictions
     
+    def inference_sentence(self, sentence):
+        data = pd.DataFrame([sentence], columns=['sentence'])
+        letter = ''
+
+        # Phase 1 Inference
+        predictions_phase1 = self.inference_phase(1, data)
+
+        # Assuming phase 1 predicts which phase 2 model to use
+        if predictions_phase1[0] == 0:
+            letter = 'A'
+        elif predictions_phase1[0] == 1:
+            letter = 'B'
+        else:
+            letter = 'C'
+
+        # Phase 2 Inference
+        difficulty_level = self.inference_phase(2, data, letter)
+
+        difficulty = letter + str(difficulty_level[0] + 1)
+
+        return difficulty
 
 if __name__ == "__main__":
     # Example usage
