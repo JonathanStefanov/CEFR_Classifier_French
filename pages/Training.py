@@ -39,14 +39,7 @@ def main():
 
 
         # Training Process
-        st.write("Training Phase 1")
-        trainer.train_phase_1(dataset)
-        for letter in ["A", "B", "C"]:
-            dataset = get_full_dataset()
-
-            st.write(f"Training Phase 2 - {letter}")
-            trainer.train_phase_2(letter, dataset)
-            st.write(f"Training Phase 2 - {letter} Complete")
+        trainer.train(dataset)
         
         st.write("Training Complete")
 

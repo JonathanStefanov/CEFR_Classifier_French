@@ -7,11 +7,15 @@ from stqdm import stqdm
 # Define a class for the Predictor
 class Predictor:
 
-    def __init__(self):
+    def __init__(self, model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth'):
         self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
         self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
+        self.model_path_phase1 = model_path_phase1
+        self.model_path_phase2_A = model_path_phase2_A
+        self.model_path_phase2_B = model_path_phase2_B
+        self.model_path_phase2_C = model_path_phase2_C
 
     class FrenchSentencesDataset(Dataset):
         def __init__(self, sentences, tokenizer, max_len):
@@ -55,9 +59,10 @@ class Predictor:
                 predictions.extend(preds.tolist())
 
         return predictions
-    def inference_phase(self, phase, model_path, data):
+    def inference_phase(self, phase, data, letter=None):
         # Load model
         num_labels = 3 if phase == 1 else 2
+        model_path = self.model_path_phase1 if phase == 1 else (self.model_path_phase2_A if letter == 'A' else (self.model_path_phase2_B if letter == 'B' else self.model_path_phase2_C))
         model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=num_labels)
         model.load_state_dict(torch.load(model_path, map_location=self.device))
         model.to(self.device)
@@ -81,16 +86,16 @@ class Predictor:
         data.to_csv(output_file_path, index=False)
 
         return predictions
+    
 
 if __name__ == "__main__":
     # Example usage
-    predictor = Predictor()
+    predictor = Predictor(model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth')
     unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
-    model_path_phase1 = 'phase1.pth'  # Replace with your Phase 1 model path
 
     # Phase 1 Inference
     df = pd.read_csv(unseen_data_path)
-    predictions_phase1 = predictor.inference_phase(1, model_path_phase1, df)
+    predictions_phase1 = predictor.inference_phase(1, df)
 
     # Further processing based on Phase 1 predictions
     df_A = df[df['predictions'] == 0].reset_index(drop=True)
@@ -98,12 +103,9 @@ if __name__ == "__main__":
     df_C = df[df['predictions'] == 2].reset_index(drop=True)
 
     # Phase 2 Inference
-    model_path_A = 'phase_2_A.pth'  # Replace with your Phase 2 model path
-    model_path_B = 'phase_2_B.pth' 
-    model_path_C = 'phase_2_C.pth'  
 
-    predictor.inference_phase(2, model_path_A, df_A)
-    predictor.inference_phase(2, model_path_B, df_B)
-    predictor.inference_phase(2, model_path_C, df_C)
+    predictor.inference_phase(2, df_A, 'A')
+    predictor.inference_phase(2, df_B, 'B')
+    predictor.inference_phase(2, df_C, 'C')
 
     print("Predictions saved to inference directory.")

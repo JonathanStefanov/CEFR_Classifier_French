@@ -75,7 +75,7 @@ class Trainer:
         print(f"Training complete. Saving the model to {model_filename}.")
         torch.save(model.state_dict(), model_filename)
 
-    def train_phase_1(self, dataset):
+    def _train_phase_1(self, dataset):
         print(f'Using device: {self.device}')
 
         EPOCHS = 3
@@ -98,7 +98,7 @@ class Trainer:
 
         self._train_model(model, train_data_loader, optimizer, loss_fn, self.EPOCHS_PHASE_1)
 
-    def train_phase_2(self, letter, dataset):
+    def _train_phase_2(self, letter, dataset):
         print(f'Using device: {self.device}')
 
         EPOCHS = 2
@@ -122,16 +122,19 @@ class Trainer:
 
         self._train_model(model, train_data_loader, optimizer, loss_fn, self.EPOCHS_PHASE_2, letter)
 
+    def train(self, dataset):
+        print("Training Phase 1")
+        self._train_phase_1(dataset)
+        for letter in ["A", "B", "C"]:
+                print(f"Training Phase 2 - {letter}")
+                self._train_phase_2(letter, dataset)
+
 if __name__ == "__main__":
     # Example usage
     trainer = Trainer()
     dataset = get_full_dataset()  # Replace with your dataset loading method
 
-    # Train Phase 1
-    print("Training Phase 1")
-    trainer.train_phase_1(dataset)
+    print(dataset.shape)
 
-    # Train Phase 2
-    for letter in ["A", "B", "C"]:
-        print(f"Training Phase 2 - {letter}")
-        trainer.train_phase_2(letter, dataset)
+    # Train Phase 1
+    trainer.train(dataset)
