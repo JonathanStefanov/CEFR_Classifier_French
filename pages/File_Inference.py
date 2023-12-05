@@ -59,7 +59,7 @@ def main():
 
         if st.button("Make Predictions"):
             predictor = Predictor(model_path_phase1=model_path_phase1, model_path_phase2_A=model_path_A, model_path_phase2_B=model_path_B, model_path_phase2_C=model_path_C)
-
+            
             # Phase 1 Inference
             predictor.inference_phase(1, data)
 
@@ -72,31 +72,22 @@ def main():
             predictor.inference_phase(2, df_A, 'A')
             predictor.inference_phase(2, df_B, 'B')
             predictor.inference_phase(2, df_C, 'C')
+            
+            # Process individual files
+            process_file('results/predictions_phase2_A.csv', 'results/p2A.csv', lambda x: 'A1' if x == 0 else 'A2')
+            process_file('results/predictions_phase2_B.csv', 'results/p2B.csv', lambda x: 'B1' if x == 0 else 'B2')
+            process_file('results/predictions_phase2_C.csv', 'results/p2C.csv', lambda x: 'C1' if x == 0 else 'C2')
 
-            if st.button("Process and Combine Prediction Results"):
-                # Process individual files
-                process_file('results/predictions_phase2_A.csv', 'results/p2A.csv', lambda x: 'A1' if x == 0 else 'A2')
-                process_file('results/predictions_phase2_B.csv', 'results/p2B.csv', lambda x: 'B1' if x == 0 else 'B2')
-                process_file('results/predictions_phase2_C.csv', 'results/p2C.csv', lambda x: 'C1' if x == 0 else 'C2')
+            # Combine processed files
+            combined_df = combine_files(['results/p2A.csv', 'results/p2B.csv', 'results/p2C.csv'], 'submission.csv')
 
-                # Combine processed files
-                combined_df = combine_files(['results/p2A.csv', 'results/p2B.csv', 'results/p2C.csv'], 'submission.csv')
+            st.success("Processing complete. Combined file saved as 'submission.csv'.")
+            st.write(combined_df.head())  
 
-                st.success("Processing complete. Combined file saved as 'submission.csv'.")
-                st.write(combined_df.head())  # Optionally display the first few rows
-
-                # delete intermediate files
-                os.remove('results/p2A.csv')
-                os.remove('results/p2B.csv')
-                os.remove('results/p2C.csv')
-                os.remove('results/predictions_phase2_A.csv')
-                os.remove('results/predictions_phase2_B.csv')
-                os.remove('results/predictions_phase2_C.csv')
-                os.remove('results/predictions_phase1.csv')
+            # Create a download link for the processed file
+            st.markdown(get_table_download_link(combined_df), unsafe_allow_html=True)
 
 
-                # Create a download link for the processed file
-                st.markdown(get_table_download_link(combined_df), unsafe_allow_html=True)
 
 
 if __name__ == "__main__":

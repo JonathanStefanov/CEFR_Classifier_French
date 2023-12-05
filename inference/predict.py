@@ -61,6 +61,8 @@ class Predictor:
         return predictions
     def inference_phase(self, phase, data, letter=None):
         # Load model
+        print(f'Using device: {self.device}')
+        print('Loading model...')
         num_labels = 3 if phase == 1 else 2
         model_path = self.model_path_phase1 if phase == 1 else (self.model_path_phase2_A if letter == 'A' else (self.model_path_phase2_B if letter == 'B' else self.model_path_phase2_C))
         model = CamembertForSequenceClassification.from_pretrained("camembert-base", num_labels=num_labels)
@@ -68,6 +70,7 @@ class Predictor:
         model.to(self.device)
 
         # Prepare the dataset and data loader
+        print('Preparing dataset and data loader...')
         DatasetClass = self.FrenchSentencesDataset
         unseen_dataset = DatasetClass(data['sentence'].reset_index(drop=True), self.tokenizer, self.MAX_LEN)
         unseen_data_loader = DataLoader(unseen_dataset, batch_size=self.BATCH_SIZE)
