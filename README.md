@@ -8,7 +8,6 @@ This application, built using Streamlit 🌐, leverages the advanced capabilitie
 The CEFR is an internationally recognized standard for describing language ability. It's widely used across the globe to assess and describe the language proficiency of learners.
 
 ## About Our Model 🤖
-<<<<<<< HEAD
 Our application utilizes the Camembert model, a cutting-edge language processing model, structured in a unique three-phase system to accurately assess and classify texts:
 1. **Phase 1 - Initial Classification**: This phase classifies texts into broad categories: A, B, or C.
 2. **Phase 2 - Detailed Assessment**: 
@@ -17,9 +16,6 @@ Our application utilizes the Camembert model, a cutting-edge language processing
    - **Phase 2 C**: Distinguishes between C1 and C2 levels for texts classified as 'A' in Phase 1.
 
 This multi-phase approach ensures precise and nuanced classification in line with CEFR standards.
-=======
-Our application utilizes the Camembert model, a cutting-edge language processing model. This model has been specifically adapted and fine-tuned in three distinct phases to accurately assess and classify texts according to their language complexity and corresponding CEFR levels.
->>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
 
 ## How to Use the App 🖱️
 1. **Navigation**: Use the sidebar to easily navigate through the application.
