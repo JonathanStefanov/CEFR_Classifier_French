@@ -7,7 +7,6 @@ from stqdm import stqdm
 # Define a class for the Predictor
 class Predictor:
 
-<<<<<<< HEAD
     def __init__(self, model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth'):
         self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = 387
