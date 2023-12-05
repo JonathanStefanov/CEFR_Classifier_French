@@ -62,7 +62,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "mps")
 print(f'Using device: {device}')
 
 MAX_LEN = 387
-BATCH_SIZE = 8
+BATCH_SIZE = 32
 EPOCHS = 3
 
 # Load the dataset
@@ -132,8 +132,11 @@ loss_fn = torch.nn.CrossEntropyLoss()
 # Training and evaluation function
 def train_and_evaluate(model, train_data_loader, val_data_loader, optimizer, loss_fn, epochs, device):
     best_val_accuracy = 0
+    epochs_without_improvement = 0
+    best_model_state = None
+    patience = 4
 
-    for epoch in range(epochs):
+    for epoch in range(200):
         model.train()
         total_loss = 0
 
@@ -170,8 +173,20 @@ def train_and_evaluate(model, train_data_loader, val_data_loader, optimizer, los
         avg_val_accuracy = total_val_accuracy / len(val_dataset)
         print(f'Epoch {epoch + 1}/{epochs} - Validation Accuracy: {avg_val_accuracy:.2f}')
 
+        # Early stopping check
         if avg_val_accuracy > best_val_accuracy:
             best_val_accuracy = avg_val_accuracy
+            epochs_without_improvement = 0
+            best_model_state = model.state_dict()
+        else:
+            epochs_without_improvement += 1
+            if epochs_without_improvement >= patience:
+                print(f'No improvement for {patience} consecutive epochs. Stopping training.')
+                break
+
+        print(f'Best Validation Accuracy: {best_val_accuracy:.2f}')
+        print("Saving the best model")
+        torch.save(best_model_state, "best_model.pth")
 
     print(f'Best Validation Accuracy: {best_val_accuracy:.2f}')
     print("Saving the model")

@@ -39,6 +39,9 @@ def main():
 
 
         # Training Process
+<<<<<<< HEAD
+        trainer.train(dataset)
+=======
         st.write("Training Phase 1")
         trainer.train_phase_1(dataset)
         for letter in ["A", "B", "C"]:
@@ -47,6 +50,7 @@ def main():
             st.write(f"Training Phase 2 - {letter}")
             trainer.train_phase_2(letter, dataset)
             st.write(f"Training Phase 2 - {letter} Complete")
+>>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
         
         st.write("Training Complete")
 
