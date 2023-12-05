@@ -122,6 +122,7 @@ class Trainer:
 
         self._train_model(model, train_data_loader, optimizer, loss_fn, self.EPOCHS_PHASE_2, letter)
 
+<<<<<<< HEAD
     def train(self, dataset):
         print("Training Phase 1")
         self._train_phase_1(dataset)
@@ -138,3 +139,18 @@ if __name__ == "__main__":
 
     # Train Phase 1
     trainer.train(dataset)
+=======
+if __name__ == "__main__":
+    # Example usage
+    trainer = Trainer()
+    dataset = get_full_dataset()  # Replace with your dataset loading method
+
+    # Train Phase 1
+    print("Training Phase 1")
+    trainer.train_phase_1(dataset)
+
+    # Train Phase 2
+    for letter in ["A", "B", "C"]:
+        print(f"Training Phase 2 - {letter}")
+        trainer.train_phase_2(letter, dataset)
+>>>>>>> 26c4e849627f7df570f8fcb6f881bfca46d171e1
