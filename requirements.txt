@@ -1,0 +1,8 @@
+pandas
+torch
+sentencepiece
+transformers
+torchvision
+stqdm
+streamlit
+scikit-learn
