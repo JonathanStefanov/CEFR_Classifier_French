@@ -6,3 +6,4 @@ torchvision
 stqdm
 streamlit
 scikit-learn
+wget
