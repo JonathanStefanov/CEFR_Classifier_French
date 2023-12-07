@@ -7,6 +7,30 @@ This application, built using Streamlit 🌐, leverages the advanced capabilitie
 ## What is CEFR? 📘
 The CEFR is an internationally recognized standard for describing language ability. It's widely used across the globe to assess and describe the language proficiency of learners.
 
+## How to Run the App 🚀
+### On Your Own Computer
+1. **Clone the Repository**: 
+```
+git clone git@github.com:JonathanStefanov/CEFR_Classifier_French.git
+```
+2. **Navigate to the Folder**: 
+```
+cd CEFR_Classifier_French
+```
+3. **Install the Requirements**: 
+```
+pip install -r requirements.txt
+```
+4. **Run the Streamlit App**: 
+```
+streamlit run app.py
+```
+### On Saturn Cloud
+- **Why Use Saturn Cloud?**: Ideal if you don't have a GPU. Offers 10 hours for free.
+- **Steps**:
+1. Click on the "Run in Saturn Cloud" Button at the top of this README.
+2. Create the `CEFR_French` Resource and click on Run. All necessary configurations are pre-set.
+
 ## About Our Model 🤖
 Our application utilizes the Camembert model, a cutting-edge language processing model, structured in a unique three-phase system to accurately assess and classify texts:
 1. **Phase 1 - Initial Classification**: This phase classifies texts into broad categories: A, B, or C.
