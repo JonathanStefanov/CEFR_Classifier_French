@@ -22,6 +22,16 @@ This multi-phase approach ensures precise and nuanced classification in line wit
 2. **Training the Model**: Head over to the **Training** section 👨‍🏫. Here, you can train the model with your dataset, allowing it to learn and adapt to your specific language use cases.
 3. **Text Classification**: Visit the **Inference** section 🔍 to input text. The app will analyze the text and provide you with its CEFR level classification.
 
+## Our Model's Evolution 🤖
+### Initial Attempts
+- **Logistic Regression Approach**: We began by analyzing sentence structure - counting length, verbs, punctuation, and checking for passive sentences. Despite these efforts, a logistic regression model yielded unsatisfactory results.
+
+### Transition to Camembert Model
+- **First Camembert Trial**: Shifting gears, we implemented a Camembert language model. Although it improved accuracy to 58%, the model's size and training speed were concerning.
+
+### Final, Optimized Model
+- **Three-Phase Camembert System**: Our breakthrough came with a refined version of the Camembert model, structured in three phases for precise, efficient classification. This significantly accelerated training times without compromising accuracy. It even increased it to 60,2% with the same dataset.
+
 ## Explore More 🔗
 Interested in learning more about this project? Looking for source code or detailed documentation? Visit our [GitHub Repository](https://github.com/JonathanStefanov/CEFR_Classifier_French) 🌟 for all the resources you need.
 
