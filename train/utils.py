@@ -1,6 +1,25 @@
 import pandas as pd
 import os
+
 def merge_clean_datasets(*urls):
+    """
+    Merges multiple datasets from given URLs. Ensures that each dataset contains 
+    the required columns ('sentence', 'difficulty') and removes duplicate sentences.
+
+    Parameters:
+    *urls : str
+        Variable number of URL strings pointing to the datasets to be merged.
+
+    Raises:
+    ValueError
+        If any dataset does not contain the required columns.
+
+    Returns:
+    DataFrame
+        The merged and cleaned dataframe containing unique sentences and their 
+        corresponding difficulty levels.
+    """
+
     required_columns = {'sentence', 'difficulty'}
     dataframes = []
 
@@ -26,8 +45,13 @@ def get_file_paths(directory):
     """
     Returns a list of file paths for all files in the given directory.
     
-    :param directory: The directory to search for files.
-    :return: A list of file paths.
+    Parameters:
+    directory : str
+        The directory to search for files.
+
+    Returns:
+    list
+        A list of file paths for all files in the specified directory.
     """
     file_paths = []
     for root, dirs, files in os.walk(directory):
@@ -39,9 +63,12 @@ def get_file_paths(directory):
 
 def get_full_dataset():
     """
-    Returns the full dataset.
-    
-    :return: The full dataset.
+    Retrieves and returns the full dataset by merging and cleaning individual datasets 
+    found in the 'datasets/' directory.
+
+    Returns:
+    DataFrame
+        The full, merged, and cleaned dataset.
     """
     # Get the file paths for all files in the data directory
     file_paths = get_file_paths('datasets/')
