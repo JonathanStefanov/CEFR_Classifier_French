@@ -3,6 +3,8 @@ import torch
 from transformers import CamembertTokenizer, CamembertForSequenceClassification
 from torch.utils.data import DataLoader, Dataset
 from stqdm import stqdm
+import os
+import requests
 
 # Define a class for the Predictor
 class Predictor:
@@ -12,10 +14,11 @@ class Predictor:
         self.MAX_LEN = 387
         self.BATCH_SIZE = 16
         self.tokenizer = CamembertTokenizer.from_pretrained("camembert-base")
-        self.model_path_phase1 = model_path_phase1
-        self.model_path_phase2_A = model_path_phase2_A
-        self.model_path_phase2_B = model_path_phase2_B
-        self.model_path_phase2_C = model_path_phase2_C
+        self.model_path_phase1 = self._check_and_download_model(model_path_phase1, phase=1)
+        self.model_path_phase2_A = self._check_and_download_model(model_path_phase2_A, phase=2, letter='A')
+        self.model_path_phase2_B = self._check_and_download_model(model_path_phase2_B, phase=2, letter='B')
+        self.model_path_phase2_C = self._check_and_download_model(model_path_phase2_C, phase=2, letter='C')
+
 
     class FrenchSentencesDataset(Dataset):
         def __init__(self, sentences, tokenizer, max_len):
@@ -44,6 +47,38 @@ class Predictor:
                 'input_ids': encoding['input_ids'].flatten(),
                 'attention_mask': encoding['attention_mask'].flatten()
             }
+        
+    def _check_and_download_model(self, model_path, phase, letter=None):
+        if not os.path.exists(model_path):
+            print(f"Model {model_path} not found. Downloading...")
+            self._download_model(phase, letter)
+        return model_path
+    
+    def _download_model(self, phase, letter=None):
+        # Base URL structure
+        base_url = "https://github.com/JonathanStefanov/CEFR_Classifier_French/releases/download/Weights/"
+
+        # Validate inputs
+        if phase not in [1, 2]:
+            raise ValueError("Invalid phase")
+        if phase == 2 and letter not in ['A', 'B', 'C']:
+            raise ValueError("Invalid letter for phase 2")
+
+        # Construct the URL based on the phase and letter
+        url = f"{base_url}{phase}"
+        url += f"_{letter}" if letter else ""
+        url += ".pth"
+
+        # Download the model
+        response = requests.get(url, stream=True)
+        model_path = f"phase{phase}_{letter}.pth" if letter else f"phase{phase}.pth"
+        
+        with open(model_path, 'wb') as f:
+            f.write(response.content)
+        
+        print(f"Model downloaded and saved to {model_path}")
+
+
 
     def _predict(self, model, data_loader):
         model.eval()
@@ -111,24 +146,3 @@ class Predictor:
         difficulty = letter + str(difficulty_level[0] + 1)
 
         return difficulty
-
-if __name__ == "__main__":
-    # Example usage
-    predictor = Predictor(model_path_phase1='phase1.pth', model_path_phase2_A='phase_2_A.pth', model_path_phase2_B='phase_2_B.pth', model_path_phase2_C='phase_2_C.pth')
-    unseen_data_path = 'kaggle/unlabelled_test_data.csv'  # Replace with your unseen data path
-
-    # Phase 1 Inference
-    df = pd.read_csv(unseen_data_path)
-    predictions_phase1 = predictor.inference_phase(1, df)
-
-    # Further processing based on Phase 1 predictions
-    df_A = df[df['predictions'] == 0].reset_index(drop=True)
-    df_B = df[df['predictions'] == 1].reset_index(drop=True)
-    df_C = df[df['predictions'] == 2].reset_index(drop=True)
-
-    # Phase 2 Inference
-    predictor.inference_phase(2, df_A, 'A')
-    predictor.inference_phase(2, df_B, 'B')
-    predictor.inference_phase(2, df_C, 'C')
-
-    print("Predictions saved to inference directory.")
