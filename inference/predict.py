@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader, Dataset
 from stqdm import stqdm
 import os
 import requests
+import wget
 
 # Define a class for the Predictor
 class Predictor:
@@ -56,7 +57,7 @@ class Predictor:
     
     def _download_model(self, phase, letter=None):
         # Base URL structure
-        base_url = "https://github.com/JonathanStefanov/CEFR_Classifier_French/releases/download/Weights/"
+        base_url = "https://github.com/JonathanStefanov/CEFR_Classifier_French/releases/download/Weights/phase"
 
         # Validate inputs
         if phase not in [1, 2]:
@@ -65,16 +66,15 @@ class Predictor:
             raise ValueError("Invalid letter for phase 2")
 
         # Construct the URL based on the phase and letter
-        url = f"{base_url}{phase}"
+        url = f"{base_url}{phase}" if phase == 1 else f"{base_url}_{phase}" 
         url += f"_{letter}" if letter else ""
         url += ".pth"
 
         # Download the model
-        response = requests.get(url, stream=True)
-        model_path = f"phase{phase}_{letter}.pth" if letter else f"phase{phase}.pth"
+        print(f"Downloading model from {url}...")
+        model_path = f"phase_{phase}_{letter}.pth" if letter else f"phase{phase}.pth"
         
-        with open(model_path, 'wb') as f:
-            f.write(response.content)
+        wget.download(url)
         
         print(f"Model downloaded and saved to {model_path}")
 
