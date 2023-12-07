@@ -128,13 +128,3 @@ class Trainer:
         for letter in ["A", "B", "C"]:
                 print(f"Training Phase 2 - {letter}")
                 self._train_phase_2(letter, dataset)
-
-if __name__ == "__main__":
-    # Example usage
-    trainer = Trainer()
-    dataset = get_full_dataset()  # Replace with your dataset loading method
-
-    print(dataset.shape)
-
-    # Train Phase 1
-    trainer.train(dataset)

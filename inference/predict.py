@@ -85,7 +85,7 @@ class Predictor:
         predictions = []
 
         with torch.no_grad():
-            for batch in stqdm(data_loader, desc="Predicting..."):
+            for batch in stqdm(data_loader, desc="Predicting...", backend=True, frontend=True):
                 input_ids = batch['input_ids'].to(self.device)
                 attention_mask = batch['attention_mask'].to(self.device)
 
