@@ -177,6 +177,11 @@ class Predictor:
         # Save predictions to a CSV file
         data['predictions'] = predictions
         # Check if the model path ends with A.pth, B.pth or C.pth
+
+        # Create results directory if it doesn't exist
+        if not os.path.exists('results'):
+            os.makedirs('results')
+            
         if phase == 1:
             output_file_path = 'results/predictions_phase1.csv'
         else:

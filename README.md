@@ -6,8 +6,28 @@ This application, built using Streamlit 🌐, leverages the advanced capabilitie
 
 ## What is CEFR? 📘
 The CEFR is an internationally recognized standard for describing language ability. It's widely used across the globe to assess and describe the language proficiency of learners.
+## Installation via pip 📦
+Easily install the CEFR Level Classifier package with pip:
+```bash
+pip install CEFR-Classifier-French
+```
+## Example Usage 🌟
+Here's a quick example of how to use the `CEFR-Classifier-French` package to predict the CEFR level of a French sentence:
 
-## How to Run the App 🚀
+```python
+from CEFR_Classifier_French.inference.predict import Predictor
+
+predictor = Predictor()
+
+# Predict the CEFR level of a text
+text = "Je ne sais pas quoi dire."
+
+level = predictor.inference_sentence(text)
+
+print("Level of the sentence is -> ", level)
+```
+
+## How to Run the GUI 🚀
 ### On Your Own Computer
 1. **Clone the Repository**: 
 ```
@@ -23,13 +43,14 @@ pip install -r requirements.txt
 ```
 4. **Run the Streamlit App**: 
 ```
-streamlit run app.py
+streamlit run CEFR_Classifier_French/app.py
 ```
 ### On Saturn Cloud
 - **Why Use Saturn Cloud?**: Ideal if you don't have a GPU. Offers 10 hours for free.
 - **Steps**:
 1. Click on the "Run in Saturn Cloud" Button at the top of this README.
 2. Create the `CEFR_French` Resource and click on Run. All necessary configurations are pre-set.
+
 
 ## About Our Model 🤖
 Our application utilizes the Camembert model, a cutting-edge language processing model, structured in a unique three-phase system to accurately assess and classify texts:

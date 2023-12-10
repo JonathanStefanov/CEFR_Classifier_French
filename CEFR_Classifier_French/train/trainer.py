@@ -12,10 +12,11 @@ class FrenchSentencesDataset(Dataset):
         """
         Initializes the dataset object with sentences, labels, tokenizer, and max length.
 
-        sentences: List of sentences in the dataset.
-        labels: Corresponding labels for the sentences.
-        tokenizer: Tokenizer to be used for encoding sentences.
-        max_len: Maximum length of the tokenized sentences.
+        Parameters:
+        sentences (List[str]): List of sentences in the dataset.
+        labels (List[int]): Corresponding labels for the sentences.
+        tokenizer (CamembertTokenizer): Tokenizer to be used for encoding sentences.
+        max_len (int): Maximum length of the tokenized sentences.
         """
         self.sentences = sentences
         self.labels = labels
@@ -24,7 +25,13 @@ class FrenchSentencesDataset(Dataset):
 
     def __len__(self):
         """
-        Returns the length of the dataset.
+        Retrieves an item from the dataset by its index.
+
+        Parameters:
+        item (int): Index of the item to retrieve.
+
+        Returns:
+        dict: A dictionary containing the sentence text, input IDs, attention mask, and label.
         """
         return len(self.sentences)
 
@@ -62,12 +69,13 @@ class Trainer:
         """
         Initializes the Trainer class with training parameters.
 
-        max_len: Maximum length of sentences.
-        batch_size: Batch size for training.
-        epochs_phase_1: Number of epochs for the first training phase.
-        epochs_phase_2: Number of epochs for the second training phase.
-        lr_phase_1: Learning rate for the first phase.
-        lr_phase_2: Learning rate for the second phase.
+        Parameters:
+        max_len (int): Maximum length of sentences for tokenization.
+        batch_size (int): Batch size for training data.
+        epochs_phase_1 (int): Number of epochs for the first training phase (Phase 1).
+        epochs_phase_2 (int): Number of epochs for the second training phase (Phase 2).
+        lr_phase_1 (float): Learning rate for the first phase (Phase 1).
+        lr_phase_2 (float): Learning rate for the second phase (Phase 2).
         """
         self.device = torch.device("cuda") if torch.cuda.is_available() else (torch.device("mps") if torch.backends.mps.is_available() else torch.device("cpu"))
         self.MAX_LEN = max_len
@@ -80,14 +88,15 @@ class Trainer:
 
     def _train_model(self, model, train_data_loader, optimizer, loss_fn, epochs, phase_letter=None):
         """
-        Private method for training the model.
+        Private method for training the model for a specific phase.
 
-        model: The model to be trained.
-        train_data_loader: DataLoader for the training data.
-        optimizer: Optimizer to be used for training.
-        loss_fn: Loss function.
-        epochs: Number of epochs for training.
-        phase_letter: Phase identifier for saving the model.
+        Parameters:
+        model (CamembertForSequenceClassification): The model to be trained.
+        train_data_loader (DataLoader): DataLoader for the training data.
+        optimizer (AdamW): Optimizer to be used for training.
+        loss_fn (function): Loss function to be used during training.
+        epochs (int): Number of epochs for training.
+        phase_letter (str, optional): Phase identifier ('A', 'B', 'C') for model saving.
         """
         for epoch in range(epochs):
             # Training process for each epoch

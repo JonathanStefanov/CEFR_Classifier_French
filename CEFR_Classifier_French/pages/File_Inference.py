@@ -7,13 +7,30 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from inference.predict import Predictor  # Ensure this import works correctly in your Streamlit environment
 
 def get_table_download_link(df):
-    """Generates a download link to allow the data in a DataFrame to be downloaded as a CSV."""
+    """
+    Generates a download link to allow the data in a DataFrame to be downloaded as a CSV.
+
+    Parameters:
+    df (pandas.DataFrame): The DataFrame to be converted to CSV and downloaded.
+
+    Returns:
+    str: An HTML anchor tag as a string that allows the CSV to be downloaded.
+    """    
     csv = df.to_csv(index=False)
     b64 = base64.b64encode(csv.encode()).decode()
     href = f'<a href="data:file/csv;base64,{b64}" download="submission.csv">Download CSV file</a>'
     return href
 
 def verify_csv_structure(df):
+    """
+    Verifies if the given DataFrame has the expected column structure for processing.
+
+    Parameters:
+    df (pandas.DataFrame): The DataFrame whose structure is to be verified.
+
+    Returns:
+    bool: True if the DataFrame has the expected structure, False otherwise.
+    """
     expected_columns = ['id', 'sentence']
     if df.columns.tolist() == expected_columns and len(df.columns) == 2:
         return True
@@ -21,6 +38,17 @@ def verify_csv_structure(df):
         return False
 
 def process_file(input_path, output_path, conversion_func):
+    """
+    Processes a CSV file by reading it, applying a conversion function, and saving the result.
+
+    Parameters:
+    input_path (str): Path to the input CSV file.
+    output_path (str): Path where the processed CSV file will be saved.
+    conversion_func (function): A function to apply to the 'predictions' column.
+
+    Returns:
+    pandas.DataFrame: The processed DataFrame.
+    """
     df = pd.read_csv(input_path)
     df['difficulty'] = df['predictions'].apply(conversion_func)
     df.drop('predictions', axis=1, inplace=True)
@@ -28,6 +56,16 @@ def process_file(input_path, output_path, conversion_func):
     return df
 
 def combine_files(file_paths, output_file):
+    """
+    Combines multiple CSV files into a single file.
+
+    Parameters:
+    file_paths (list of str): A list of file paths to the CSV files to be combined.
+    output_file (str): Path where the combined CSV file will be saved.
+
+    Returns:
+    pandas.DataFrame: The combined DataFrame.
+    """
     dfs = [pd.read_csv(file)[['id', 'difficulty']] for file in file_paths]
     combined_df = pd.concat(dfs).sort_values('id').reset_index(drop=True)
     combined_df.to_csv(output_file, index=False)
