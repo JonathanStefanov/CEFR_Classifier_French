@@ -53,6 +53,9 @@ def get_file_paths(directory):
     list
         A list of file paths for all files in the specified directory.
     """
+    if not os.path.isdir(directory):
+        raise FileNotFoundError(f"The directory {directory} does not exist.")
+    
     file_paths = []
     for root, dirs, files in os.walk(directory):
         for file in files:

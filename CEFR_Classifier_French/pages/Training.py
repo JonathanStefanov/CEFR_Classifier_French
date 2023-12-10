@@ -7,6 +7,9 @@ from utils import get_full_dataset
 from train.trainer import Trainer
 
 def save_uploadedfile(uploadedfile):
+    if not os.path.exists('datasets'):
+        os.makedirs('datasets')
+
     with open(os.path.join("datasets", uploadedfile.name), "wb") as f:
         f.write(uploadedfile.getbuffer())
     return st.success("Saved File:{} to datasets/".format(uploadedfile.name))
