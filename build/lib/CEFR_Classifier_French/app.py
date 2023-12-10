@@ -1,5 +1,11 @@
-# Welcome to the CEFR Level Classifier Project! 🚀
+import streamlit as st
 
+st.set_page_config(page_title="CEFR Level Classifier", page_icon="🌍")
+
+st.title("CEFR Level Classifier with Camembert Model 🧀")
+
+# Markdown description with GitHub link and emojis
+st.markdown("""
 [![Run in Saturn Cloud](https://saturncloud.io/images/embed/run-in-saturn-cloud.svg)](https://app.community.saturnenterprise.io/dash/o/community/resources?templateId=1eea18712f1c498b81567ea0e854df87)
 
 This application, built using Streamlit 🌐, leverages the advanced capabilities of a 3-phase Camembert model 🧀 to classify texts into the six levels of the Common European Framework of Reference for Languages (CEFR): A1, A2, B1, B2, C1, and C2.
@@ -66,3 +72,7 @@ Your feedback is valuable to us! If you have suggestions or want to contribute t
 
 ## License
 This project is licensed under the GNU General Public License (GPL). This license ensures users have the freedom to share and change all versions of a program to make sure it remains free software for all its users. For more details, see the LICENSE file in the repository.
+
+
+
+""")
