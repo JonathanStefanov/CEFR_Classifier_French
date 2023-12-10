@@ -2,7 +2,7 @@
 
 [![Run in Saturn Cloud](https://saturncloud.io/images/embed/run-in-saturn-cloud.svg)](https://app.community.saturnenterprise.io/dash/o/community/resources?templateId=1eea18712f1c498b81567ea0e854df87)
 
-This application, built using Streamlit 🌐, leverages the advanced capabilities of a 3-phase Camembert model 🧀 to classify texts into the six levels of the Common European Framework of Reference for Languages (CEFR): A1, A2, B1, B2, C1, and C2.
+This application, built using Streamlit 🌐, leverages the advanced capabilities of a 3-phase Camembert AI model 🧀 to classify texts into the six levels of the Common European Framework of Reference for Languages (CEFR): A1, A2, B1, B2, C1, and C2.
 
 ## What is CEFR? 📘
 The CEFR is an internationally recognized standard for describing language ability. It's widely used across the globe to assess and describe the language proficiency of learners.
