@@ -75,7 +75,7 @@ This multi-phase approach ensures precise and nuanced classification in line wit
 - **First Camembert Trial**: Shifting gears, we implemented a Camembert language model. Although it improved accuracy to 58%, the model's size and training speed were concerning.
 
 ### Final, Optimized Model
-- **Two-Phase Camembert System**: Our breakthrough came with a refined version of the Camembert model, structured in three phases for precise, efficient classification. This significantly accelerated training times without compromising accuracy. It even increased it to 60,2% with the same dataset.
+- **Two-Phase Camembert System**: Our breakthrough came with a refined version of the Camembert model, structured in two phases for precise, efficient classification. This significantly accelerated training times without compromising accuracy. It even increased it to 60,2% with the same dataset.
 
 ## Explore More 🔗
 Interested in learning more about this project? Looking for source code or detailed documentation? Visit our [GitHub Repository](https://github.com/JonathanStefanov/CEFR_Classifier_French) 🌟 for all the resources you need.
