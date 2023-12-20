@@ -4,6 +4,9 @@
 
 This application, built using Streamlit 🌐, leverages the advanced capabilities of a 3-phase Camembert AI model 🧀 to classify texts into the six levels of the Common European Framework of Reference for Languages (CEFR): A1, A2, B1, B2, C1, and C2.
 
+[![Video Presentation](https://img.youtube.com/vi/3p9YL150QXU/0.jpg)](https://www.youtube.com/watch?v=3p9YL150QXU)
+
+
 ## What is CEFR? 📘
 The CEFR is an internationally recognized standard for describing language ability. It's widely used across the globe to assess and describe the language proficiency of learners.
 ## Installation via pip 📦
