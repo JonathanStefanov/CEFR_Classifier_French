@@ -80,7 +80,25 @@ This multi-phase approach ensures precise and nuanced classification in line wit
 
 ### Final, Optimized Model
 - **Two-Phase Camembert System**: Our breakthrough came with a refined version of the Camembert model, structured in two phases for precise, efficient classification. This significantly accelerated training times without compromising accuracy. It even increased it to 60,2% with the same dataset.
+### Advanced Metrics
 
+:warning: **Attention**: Here the accuracy is lower than in the Kaggle file because I have had to retrain the data with an 85-15 split for train and test in order to be able to recompute the F1 score, accuracy, precision, and recall as well as the confusion matrix. This is why the accuracy is 5% lower here.
+
+| Metric     | Value                  |
+|------------|------------------------|
+| Accuracy   | 0.5402777777777777     |
+| F1 Score   | 0.5399223400401946     |
+| Recall     | 0.5402777777777777     |
+| Precision  | 0.5455209131671773     |
+
+And now the confusion matrix:
+
+[[78 22 11 1 0 0]
+[22 65 39 2 0 0]
+[11 27 72 14 1 1]
+[ 2 2 13 70 24 10]
+[ 1 1 12 26 56 24]
+[ 0 0 5 11 49 48]]
 ## Explore More 🔗
 Interested in learning more about this project? Looking for source code or detailed documentation? Visit our [GitHub Repository](https://github.com/JonathanStefanov/CEFR_Classifier_French) 🌟 for all the resources you need.
 
